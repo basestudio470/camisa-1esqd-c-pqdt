@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Camisa Comemorativa 1º Esqd C Pqdt</title>
+<meta name="description" content="Pedido da Camisa Comemorativa do 1º Esqd C Pqdt — escolha, pague via Pix e envie em uma página.">
+<meta name="theme-color" content="#8FD3F4">
+<link rel="icon" href="assets/brasao-novo-web.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   TEMA — cores tiradas do brasão do 1º Esqd C Pqdt
+   ============================================================ */
+:root{
+  color-scheme: light;
+
+  --paper:        #F5F1E8;
+  --paper-2:      #EAE3D3;
+  --white:        #FFFFFF;
+  --ink:          #141414;
+  --ink-dim:      #4F4B44;
+  --ink-faint:    #8A857A;
+
+  --red:          #E30613;
+  --red-dark:     #A8040E;
+  --yellow:       #FADC1C;
+  --sky:          #8FD3F4;
+
+  --font-display: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  --font-body:    'Barlow', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --shadow-hard: 4px 4px 0 var(--ink);
+  --shadow-hard-sm: 2px 2px 0 var(--ink);
+  --ease: cubic-bezier(.22,.9,.32,1);
+  --bar-h: 76px;
+}
+
+*{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+html{ scroll-behavior:smooth; scroll-padding-top:16px; }
+body{
+  margin:0;
+  background:var(--paper);
+  background-image:
+    repeating-linear-gradient(45deg,  rgba(20,20,20,.035) 0 1px, transparent 1px 34px),
+    repeating-linear-gradient(-45deg, rgba(20,20,20,.035) 0 1px, transparent 1px 34px);
+  color:var(--ink);
+  font-family:var(--font-body);
+  padding-bottom:calc(var(--bar-h) + env(safe-area-inset-bottom) + 24px);
+}
+button{ font:inherit; color:inherit; }
+body.modal-open{ overflow:hidden; }
+
+/* -------------------------------- topo -------------------------------- */
+.band{
+  display:flex; align-items:center; gap:12px;
+  padding:8px 20px; padding-top:max(8px, env(safe-area-inset-top));
+  background:var(--sky); border-bottom:3px solid var(--ink);
+}
+.band img{ height:40px; width:auto; display:block; }
+.band-text{ display:flex; flex-direction:column; line-height:1; }
+.band-unit{ font-family:var(--font-display); font-weight:800; font-size:19px; letter-spacing:.5px; text-transform:uppercase; }
+.band-unit b{ color:var(--ink); }
+.band-sub{ font-family:var(--font-display); font-weight:600; font-size:12.5px; letter-spacing:1.5px; text-transform:uppercase; color:var(--ink-dim); margin-top:3px; }
+
+/* -------------------------------- layout -------------------------------- */
+.page{
+  max-width:1120px; margin:0 auto; padding:28px 20px 0;
+  display:grid; grid-template-columns:1fr; gap:28px;
+}
+@media (min-width:960px){
+  .page{ grid-template-columns:minmax(0, 1fr) minmax(0, 1.05fr); gap:44px; padding-top:40px; align-items:start; }
+  .hero{ position:sticky; top:24px; }
+}
+
+/* -------------------------------- capa -------------------------------- */
+.hero{ text-align:center; }
+.hero-brasao{ width:100px; height:auto; display:block; margin:0 auto 12px; filter:drop-shadow(3px 3px 0 rgba(20,20,20,.18)); }
+.kicker{
+  font-family:var(--font-display); font-weight:700; letter-spacing:2.5px;
+  font-size:13.5px; text-transform:uppercase; color:var(--red-dark); margin-bottom:8px;
+}
+.hero-title{
+  font-family:var(--font-display); font-weight:800; text-transform:uppercase;
+  font-size:clamp(2.2rem, 8vw, 3.3rem); line-height:.95; margin:0 0 20px; letter-spacing:.3px;
+}
+.hero-title span{
+  display:inline-block; margin-top:6px;
+  background:var(--red); color:var(--white);
+  padding:2px 14px 4px; border:2px solid var(--ink); box-shadow:var(--shadow-hard-sm);
+  transform:rotate(-1.5deg);
+}
+.photo-card{
+  position:relative; display:block; width:100%; padding:0; cursor:zoom-in;
+  border:2px solid var(--ink); border-radius:var(--radius-md); overflow:hidden;
+  box-shadow:var(--shadow-hard); background:var(--paper-2);
+}
+.photo-card img{ width:100%; display:block; height:auto; }
+.zoom-tag{
+  position:absolute; right:10px; bottom:10px;
+  font-family:var(--font-display); font-weight:700; font-size:13px; letter-spacing:1px; text-transform:uppercase;
+  background:var(--yellow); color:var(--ink); border:2px solid var(--ink); border-radius:999px; padding:3px 11px;
+}
+.facts{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:18px 0; }
+.fact{
+  background:var(--white); border:2px solid var(--ink); border-radius:var(--radius-sm);
+  padding:10px 6px; display:flex; flex-direction:column; gap:2px;
+}
+.fact b{ font-family:var(--font-display); font-weight:800; font-size:23px; line-height:1; }
+.fact b.price{ color:var(--red); }
+.fact span{ font-size:12.5px; color:var(--ink-dim); line-height:1.3; }
+.how{
+  display:grid; grid-template-columns:repeat(3,1fr); gap:0;
+  border:2px solid var(--ink); border-radius:var(--radius-sm); overflow:hidden; background:var(--white);
+  text-align:left;
+}
+.how div{ padding:10px 10px 11px; font-size:13px; line-height:1.3; color:var(--ink-dim); }
+.how div + div{ border-left:2px solid var(--ink); }
+.how b{ display:block; font-family:var(--font-display); font-weight:800; font-size:15px; text-transform:uppercase; color:var(--ink); letter-spacing:.4px; }
+.how i{ font-style:normal; color:var(--red); margin-right:3px; }
+.jump{ display:none; margin-top:18px; }
+@media (max-width:959px){ .jump{ display:inline-flex; } }
+.credit{ margin-top:18px; font-size:11.5px; color:var(--ink-faint); }
+.credit b{ color:var(--ink-dim); font-weight:600; }
+
+/* -------------------------------- blocos do pedido -------------------------------- */
+.order{ display:flex; flex-direction:column; gap:22px; }
+.block{
+  background:var(--white); border:2px solid var(--ink); border-radius:var(--radius-md);
+  box-shadow:var(--shadow-hard); overflow:hidden;
+}
+.block-head{
+  display:flex; align-items:center; gap:10px;
+  background:var(--sky); border-bottom:2px solid var(--ink); padding:9px 16px;
+}
+.block-num{
+  width:26px; height:26px; flex-shrink:0; background:var(--red); border:2px solid var(--ink);
+  transform:rotate(45deg); display:flex; align-items:center; justify-content:center;
+}
+.block-num span{ transform:rotate(-45deg); color:var(--white); font-family:var(--font-display); font-weight:800; font-size:14px; }
+.block-head h2{ margin:0; font-family:var(--font-display); font-weight:800; font-size:20px; letter-spacing:.8px; text-transform:uppercase; }
+.block-head small{ margin-left:auto; font-size:13px; color:var(--ink-dim); font-weight:600; }
+.block-body{ padding:16px; }
+.block.has-error{ border-color:var(--red); box-shadow:4px 4px 0 var(--red); }
+
+.field-label{
+  display:block; font-family:var(--font-display); font-weight:700; font-size:13.5px;
+  letter-spacing:1.5px; text-transform:uppercase; color:var(--ink-dim); margin-bottom:7px;
+}
+.required-mark{ color:var(--red); margin-left:3px; }
+.input-field{
+  width:100%; background:var(--white); color:var(--ink);
+  border:2px solid var(--ink); border-radius:var(--radius-sm);
+  font-family:var(--font-body); font-size:18px; font-weight:500; padding:12px 13px; outline:none;
+}
+.input-field:focus{ box-shadow:0 0 0 3px var(--yellow); }
+.input-field::placeholder{ color:var(--ink-faint); font-weight:400; }
+.field-row{ display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap; margin-top:10px; }
+.field-example{ font-size:14px; color:var(--ink-dim); }
+.field-example code{ font-family:var(--font-body); font-weight:600; color:var(--ink); }
+.guerra-chip{
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:13.5px; padding:5px 10px; border-radius:var(--radius-sm);
+  border:2px dashed var(--ink-faint); color:var(--ink-faint);
+}
+.guerra-chip b{ font-family:var(--font-display); font-size:18px; letter-spacing:.8px; }
+.guerra-chip.ok{ border-style:solid; border-color:var(--ink); background:var(--yellow); color:var(--ink); }
+.field-error{ display:none; margin-top:10px; color:var(--red-dark); font-weight:600; font-size:14px; }
+.field-error.show{ display:block; }
+
+/* -------------------------------- itens -------------------------------- */
+.items{ display:flex; flex-direction:column; gap:14px; }
+.item{
+  border:2px solid var(--ink); border-radius:var(--radius-md); padding:14px 14px 16px; background:var(--white);
+  animation:popIn .3s var(--ease);
+}
+@keyframes popIn{ from{ opacity:0; transform:translateY(8px); } to{ opacity:1; transform:none; } }
+.item.has-error{ border-color:var(--red); background:#fff7f7; }
+.item-head{ display:flex; align-items:center; gap:10px; }
+.item-svg{ width:44px; height:44px; flex-shrink:0; }
+.item-svg path{ transition:fill .25s var(--ease); }
+.item-title{ font-family:var(--font-display); font-weight:800; font-size:19px; text-transform:uppercase; line-height:1; }
+.item-resumo{ font-size:13.5px; color:var(--ink-dim); margin-top:3px; }
+.item-remove{
+  margin-left:auto; width:36px; height:36px; flex-shrink:0; cursor:pointer;
+  border:2px solid var(--ink); border-radius:50%; background:var(--white); font-size:16px; line-height:1;
+}
+.item-remove:hover{ background:var(--red); color:var(--white); }
+
+.campo-label{
+  font-family:var(--font-display); font-weight:700; font-size:13px; letter-spacing:1.5px;
+  text-transform:uppercase; color:var(--ink-dim); margin:13px 0 7px;
+  display:flex; justify-content:space-between; gap:10px;
+}
+.campo-erro{ color:var(--red-dark); letter-spacing:.3px; text-transform:none; font-family:var(--font-body); font-weight:600; }
+.seg-group{ display:flex; flex-wrap:wrap; gap:8px; }
+.seg{
+  min-height:44px; padding:0 14px; cursor:pointer;
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  border:2px solid var(--ink); border-radius:var(--radius-sm); background:var(--white);
+  font-family:var(--font-display); font-weight:700; font-size:16px; letter-spacing:.4px; text-transform:uppercase;
+  transition:background .15s, color .15s;
+}
+.seg:hover{ background:var(--paper); }
+.seg.on{ background:var(--ink); color:var(--white); }
+.seg.size{ min-width:50px; padding:0 8px; }
+.seg .dot{ width:16px; height:16px; border-radius:50%; border:2px solid var(--ink); flex-shrink:0; }
+.seg.on .dot{ border-color:var(--white); }
+
+.qty-line{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:14px; padding-top:12px; border-top:1px dashed var(--ink-faint); }
+.stepper{ display:flex; align-items:center; border:2px solid var(--ink); border-radius:var(--radius-sm); overflow:hidden; }
+.stepper button{
+  width:44px; height:44px; border:none; background:var(--paper); cursor:pointer;
+  font-family:var(--font-display); font-weight:800; font-size:24px; line-height:1;
+}
+.stepper button:hover{ background:var(--yellow); }
+.stepper input{
+  width:56px; height:44px; border:none; border-left:2px solid var(--ink); border-right:2px solid var(--ink);
+  text-align:center; font-family:var(--font-display); font-weight:800; font-size:22px; outline:none;
+  -moz-appearance:textfield; appearance:textfield;
+}
+.stepper input::-webkit-outer-spin-button, .stepper input::-webkit-inner-spin-button{ -webkit-appearance:none; margin:0; }
+.qty-sub{ text-align:right; line-height:1.15; }
+.qty-sub small{ display:block; font-size:12px; color:var(--ink-dim); }
+.qty-sub b{ font-family:var(--font-display); font-weight:800; font-size:21px; }
+
+.add-item{
+  width:100%; margin-top:14px; min-height:52px; cursor:pointer;
+  border:2px dashed var(--ink); border-radius:var(--radius-md); background:var(--paper);
+  font-family:var(--font-display); font-weight:800; font-size:17px; letter-spacing:.6px; text-transform:uppercase;
+  display:flex; align-items:center; justify-content:center; gap:10px;
+}
+.add-item:hover{ background:#fff8cf; }
+.add-item span{ width:26px; height:26px; border-radius:50%; background:var(--red); color:var(--white); border:2px solid var(--ink); display:inline-flex; align-items:center; justify-content:center; font-size:18px; line-height:1; }
+.items-hint{ margin-top:10px; font-size:13px; color:var(--ink-dim); text-align:center; }
+
+/* -------------------------------- pagamento -------------------------------- */
+.total-box{
+  display:flex; align-items:baseline; justify-content:space-between; gap:12px;
+  background:var(--ink); color:var(--white); border-radius:var(--radius-sm);
+  padding:14px 16px; margin-bottom:16px;
+}
+.total-box span{ font-size:14.5px; color:#cfcac0; }
+.total-box b{ font-family:var(--font-display); font-weight:800; font-size:32px; color:var(--yellow); line-height:1; }
+.pix-key{ display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+.pix-key-label{ font-family:var(--font-display); font-weight:700; font-size:13px; letter-spacing:1.5px; text-transform:uppercase; color:var(--ink-dim); width:100%; margin-bottom:-6px; }
+.pix-key-value{ font-family:var(--font-display); font-weight:800; font-size:30px; letter-spacing:.5px; line-height:1; }
+.pix-key .btn{ margin-left:auto; min-height:42px; font-size:15px; padding:0 16px; }
+.pix-key .btn.copied{ background:var(--yellow); }
+.pix-meta{ margin-top:8px; font-size:14.5px; color:var(--ink-dim); }
+.pix-meta b{ color:var(--ink); }
+.divider{ border:none; border-top:1px dashed var(--ink-faint); margin:16px 0; }
+
+.dropzone{
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px; text-align:center;
+  width:100%; padding:20px 16px; cursor:pointer;
+  border:2px dashed var(--ink); border-radius:var(--radius-sm); background:var(--paper);
+}
+.dropzone:hover, .dropzone.drag{ background:#fff8cf; }
+.dropzone-icon{
+  width:38px; height:38px; background:var(--red); border:2px solid var(--ink); transform:rotate(45deg);
+  display:flex; align-items:center; justify-content:center; margin-bottom:8px;
+}
+.dropzone-icon span{ transform:rotate(-45deg); color:var(--white); font-weight:800; font-size:19px; line-height:1; }
+.dropzone strong{ font-family:var(--font-display); font-size:18px; text-transform:uppercase; letter-spacing:.5px; }
+.dropzone small{ color:var(--ink-dim); font-size:13px; }
+.file-row{ display:flex; align-items:center; gap:12px; }
+.file-thumb{
+  width:58px; height:58px; flex-shrink:0; border:2px solid var(--ink); border-radius:6px; overflow:hidden;
+  background:var(--paper-2); display:flex; align-items:center; justify-content:center;
+  font-family:var(--font-display); font-weight:800; font-size:15px; color:var(--red-dark);
+}
+.file-thumb img{ width:100%; height:100%; object-fit:cover; display:block; }
+.file-info{ flex:1; min-width:0; }
+.file-name{ font-weight:600; font-size:14.5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.file-size{ font-size:13px; color:var(--ink-dim); }
+.file-actions{ display:flex; gap:2px; }
+.link-btn{ background:none; border:none; cursor:pointer; padding:8px 6px; font-size:13.5px; font-weight:600; color:var(--red-dark); text-decoration:underline; text-underline-offset:3px; }
+.upload-note{ margin-top:10px; font-size:13px; color:var(--ink-dim); }
+.processing{ font-size:14px; color:var(--ink-dim); padding:14px 0; text-align:center; }
+
+/* -------------------------------- botões -------------------------------- */
+.btn{
+  font-family:var(--font-display); font-weight:700; letter-spacing:.6px; font-size:17px; text-transform:uppercase;
+  cursor:pointer; border:2px solid var(--ink); border-radius:var(--radius-sm);
+  min-height:48px; padding:0 22px; display:inline-flex; align-items:center; justify-content:center; gap:10px;
+  transition:transform .15s var(--ease), box-shadow .15s var(--ease), background .15s;
+}
+.btn:active{ transform:translate(2px,2px); box-shadow:none !important; }
+.btn-primary{ background:var(--red); color:var(--white); box-shadow:var(--shadow-hard-sm); }
+.btn-primary:hover{ background:var(--red-dark); }
+.btn-primary:disabled{ opacity:.6; cursor:wait; }
+.btn-light{ background:var(--white); box-shadow:var(--shadow-hard-sm); }
+.btn-light:hover{ background:var(--paper-2); }
+.btn:focus-visible, .seg:focus-visible, .dropzone:focus-visible, .photo-card:focus-visible,
+.add-item:focus-visible, .stepper button:focus-visible, .item-remove:focus-visible{
+  outline:3px solid var(--yellow); outline-offset:2px;
+}
+
+/* -------------------------------- barra fixa -------------------------------- */
+.bar{
+  position:fixed; left:0; right:0; bottom:0; z-index:20;
+  background:var(--white); border-top:3px solid var(--ink);
+  padding:10px 20px; padding-bottom:max(10px, env(safe-area-inset-bottom));
+}
+.bar-inner{ max-width:1120px; margin:0 auto; display:flex; align-items:center; gap:14px; min-height:calc(var(--bar-h) - 23px); }
+.bar-total{ line-height:1.1; }
+.bar-total small{ display:block; font-size:13px; color:var(--ink-dim); }
+.bar-total b{ font-family:var(--font-display); font-weight:800; font-size:27px; }
+.bar .btn{ margin-left:auto; min-height:52px; font-size:18px; padding:0 26px; }
+
+/* -------------------------------- modais -------------------------------- */
+.modal{
+  position:fixed; inset:0; z-index:50; display:none; align-items:flex-end; justify-content:center;
+  background:rgba(20,20,20,.72); padding:0;
+}
+.modal.show{ display:flex; }
+.sheet{
+  width:100%; max-width:560px; max-height:92vh; overflow-y:auto;
+  background:var(--paper); border:3px solid var(--ink); border-bottom:none;
+  border-radius:18px 18px 0 0; padding:22px 18px; padding-bottom:max(22px, env(safe-area-inset-bottom));
+  animation:sheetUp .3s var(--ease);
+}
+@keyframes sheetUp{ from{ transform:translateY(40px); opacity:0; } to{ transform:none; opacity:1; } }
+@media (min-width:640px){
+  .modal{ align-items:center; padding:20px; }
+  .sheet{ border-bottom:3px solid var(--ink); border-radius:18px; box-shadow:6px 6px 0 var(--ink); }
+}
+.sheet h3{ font-family:var(--font-display); font-weight:800; font-size:28px; text-transform:uppercase; margin:0 0 4px; line-height:1; }
+.sheet p{ color:var(--ink-dim); line-height:1.5; margin:0 0 16px; }
+.summary{ background:var(--white); border:2px solid var(--ink); border-radius:var(--radius-sm); padding:4px 14px; margin-bottom:14px; }
+.summary-row{ display:flex; align-items:center; gap:10px; padding:10px 0; border-bottom:1px dashed var(--paper-2); font-size:15px; }
+.summary-row:last-child{ border-bottom:none; }
+.summary-row .mini-svg{ width:28px; height:28px; flex-shrink:0; }
+.summary-row .q{ font-family:var(--font-display); font-weight:800; font-size:18px; min-width:30px; }
+.summary-row .v{ margin-left:auto; font-weight:600; white-space:nowrap; }
+.summary-row.total{ font-family:var(--font-display); font-weight:800; font-size:21px; text-transform:uppercase; }
+.summary-row.total .v{ color:var(--red); }
+.status-pill{
+  display:inline-flex; align-items:center; gap:6px; font-size:13.5px; font-weight:600;
+  border:2px solid var(--ink); border-radius:999px; padding:3px 10px;
+}
+.status-pill.ok{ background:var(--yellow); }
+.status-pill.pend{ background:var(--white); color:var(--red-dark); border-color:var(--red-dark); }
+.sheet-actions{ display:flex; gap:10px; margin-top:16px; }
+.sheet-actions .btn{ flex:1; }
+.send-error{ display:none; margin-top:12px; padding:12px 14px; border:2px solid var(--red); border-radius:var(--radius-sm); background:#fff0f0; color:var(--red-dark); font-weight:600; font-size:14.5px; }
+.send-error.show{ display:block; }
+.done-icon{
+  width:66px; height:66px; margin:8px auto 24px;
+  background:var(--red); border:3px solid var(--ink); box-shadow:inset 0 0 0 5px var(--yellow);
+  transform:rotate(45deg); display:flex; align-items:center; justify-content:center;
+}
+.done-icon span{ transform:rotate(-45deg); color:var(--white); font-size:30px; font-weight:800; }
+.done{ text-align:center; }
+.done .summary{ text-align:left; }
+.pedido-num{
+  display:inline-block; margin:8px 0 14px; font-family:var(--font-display); font-weight:800; font-size:22px; letter-spacing:1.5px;
+  background:var(--yellow); border:2px solid var(--ink); padding:4px 14px; border-radius:var(--radius-sm);
+}
+
+.lightbox{ align-items:center; padding:16px; background:rgba(20,20,20,.9); }
+.lightbox img{ max-width:min(100%, 1100px); max-height:88vh; object-fit:contain; border:2px solid var(--white); border-radius:var(--radius-sm); }
+.lightbox-close{
+  position:absolute; top:max(14px, env(safe-area-inset-top)); right:14px;
+  width:44px; height:44px; border-radius:50%; border:2px solid var(--white); background:transparent; color:var(--white);
+  font-size:22px; cursor:pointer;
+}
+.spinner{
+  width:22px; height:22px; border:3px solid var(--white); border-right-color:transparent; border-radius:50%;
+  animation:spin .8s linear infinite;
+}
+@keyframes spin{ to{ transform:rotate(360deg); } }
+.shake{ animation:shakeAnim .38s var(--ease); }
+@keyframes shakeAnim{
+  0%,100%{ transform:translateX(0); } 20%{ transform:translateX(-8px); } 40%{ transform:translateX(7px); }
+  60%{ transform:translateX(-5px); } 80%{ transform:translateX(3px); }
+}
+
+@media (max-width:560px){
+  .band{ padding:8px 16px; }
+  .band img{ height:36px; }
+  .page{ padding:22px 16px 0; }
+  .block-body{ padding:14px; }
+  .item{ padding:12px 12px 14px; }
+  .pix-key-value{ font-size:26px; }
+  .pix-key .btn{ margin-left:0; width:100%; }
+  .bar{ padding-left:16px; padding-right:16px; }
+  .bar .btn{ padding:0 18px; }
+  .fact b{ font-size:20px; }
+  .how div{ font-size:12px; padding:9px 8px; }
+}
+@media (prefers-reduced-motion:reduce){
+  *{ animation:none !important; transition:none !important; }
+  html{ scroll-behavior:auto; }
+}
+</style>
+</head>
+<body>
+
+<header class="band">
+  <img src="assets/brasao-novo-web.png" alt="Brasão do 1º Esqd C Pqdt">
+  <div class="band-text">
+    <span class="band-unit"><b>1º</b> Esqd C Pqdt</span>
+    <span class="band-sub">Camisa Comemorativa</span>
+  </div>
+</header>
+
+<div class="page">
+  <!-- ===================== CAPA ===================== -->
+  <section class="hero">
+    <img class="hero-brasao" src="assets/brasao-novo-web.png" alt="">
+    <div class="kicker">1º Esquadrão de Cavalaria Paraquedista</div>
+    <h1 class="hero-title">Camisa Comemorativa<br><span>1º Esqd C Pqdt</span></h1>
+
+    <!-- Para trocar a foto, substitua o arquivo assets/modelos.jpg (mesmo nome). -->
+    <button class="photo-card" id="openPhoto" type="button" aria-label="Ampliar foto das camisas">
+      <img src="assets/modelos.jpg" alt="Camisas comemorativas nas cores bege e bordô, frente e costas">
+      <span class="zoom-tag">Ampliar ⤢</span>
+    </button>
+
+    <div class="facts">
+      <div class="fact"><b class="price" id="factPrice">R$ 50</b><span>por camisa</span></div>
+      <div class="fact"><b>2 cores</b><span>Bordô · Bege</span></div>
+      <div class="fact"><b>PP–GG</b><span>Masc · Fem · Infantil</span></div>
+    </div>
+
+    <div class="how">
+      <div><b><i>1</i>Escolha</b>modelo, cor, tamanho e quantidade</div>
+      <div><b><i>2</i>Pague</b>via Pix e anexe o comprovante</div>
+      <div><b><i>3</i>Envie</b>e receba o nº do pedido</div>
+    </div>
+
+    <a class="btn btn-primary jump" href="#pedido">Quero pedir ↓</a>
+    <div class="credit">desenvolvido por <b>Base Studio</b></div>
+  </section>
+
+  <!-- ===================== PEDIDO ===================== -->
+  <form class="order" id="pedido" novalidate onsubmit="return false">
+    <section class="block" id="blockNome">
+      <div class="block-head"><div class="block-num"><span>1</span></div><h2>Seus dados</h2></div>
+      <div class="block-body">
+        <label class="field-label" for="nomeField">Nome completo do militar<span class="required-mark">*</span></label>
+        <input class="input-field" id="nomeField" type="text" autocomplete="name"
+               placeholder="Ex: Gustavo Andrade DO VALE">
+        <div class="field-row">
+          <div class="field-example">Nome de guerra em MAIÚSCULO. Ex: <code>Gustavo Andrade DO VALE</code></div>
+          <div class="guerra-chip" id="guerraChip"></div>
+        </div>
+        <div class="field-error" id="nomeError"></div>
+      </div>
+    </section>
+
+    <section class="block" id="blockItens">
+      <div class="block-head"><div class="block-num"><span>2</span></div><h2>Camisas</h2><small id="itensCount"></small></div>
+      <div class="block-body">
+        <div class="items" id="items"></div>
+        <button type="button" class="add-item" id="addItem"><span>+</span> Adicionar outra camisa</button>
+        <div class="items-hint">Sem limite de quantidade. Use um item para cada combinação de modelo, cor e tamanho.</div>
+        <div class="field-error" id="itensError"></div>
+      </div>
+    </section>
+
+    <section class="block" id="blockPagamento">
+      <div class="block-head"><div class="block-num"><span>3</span></div><h2>Pagamento</h2><small>Pix</small></div>
+      <div class="block-body">
+        <div class="total-box"><span id="totalLabel"></span><b id="totalBox"></b></div>
+
+        <div class="pix-key">
+          <div class="pix-key-label">Chave Pix (celular)</div>
+          <span class="pix-key-value" id="pixValue"></span>
+          <button type="button" class="btn btn-light" id="copyPix">Copiar chave</button>
+        </div>
+        <div class="pix-meta">Favorecido: <b id="pixName"></b></div>
+
+        <hr class="divider">
+
+        <label class="field-label">Comprovante de pagamento</label>
+        <div id="uploadSlot"></div>
+        <input type="file" id="fileInput" accept="image/*,.heic,.heif,application/pdf" hidden>
+        <div class="field-error" id="fileError"></div>
+      </div>
+    </section>
+  </form>
+</div>
+
+<!-- ===================== BARRA FIXA ===================== -->
+<div class="bar">
+  <div class="bar-inner">
+    <div class="bar-total"><small id="barCount"></small><b id="barTotal"></b></div>
+    <button type="button" class="btn btn-primary" id="btnSend">Enviar pedido →</button>
+  </div>
+</div>
+
+<!-- ===================== MODAIS ===================== -->
+<div class="modal" id="confirmModal" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+  <div class="sheet">
+    <h3 id="confirmTitle">Confira seu pedido</h3>
+    <p id="confirmName"></p>
+    <div class="summary" id="confirmSummary"></div>
+    <div id="confirmStatus"></div>
+    <div class="send-error" id="sendError"></div>
+    <div class="sheet-actions">
+      <button type="button" class="btn btn-light" id="btnEdit">Editar</button>
+      <button type="button" class="btn btn-primary" id="btnConfirm">Confirmar ✓</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="doneModal" role="dialog" aria-modal="true" aria-labelledby="doneTitle">
+  <div class="sheet done" id="doneContent"></div>
+</div>
+
+<div class="modal lightbox" id="lightbox" role="dialog" aria-label="Foto das camisas">
+  <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Fechar">✕</button>
+  <img src="assets/modelos.jpg" alt="Camisas comemorativas nas cores bege e bordô, frente e costas">
+</div>
+
+<script>
+(function(){
+"use strict";
+
+/* ============================================================
+   CONFIGURAÇÃO — edite aqui preço, Pix, webhook etc.
+   ============================================================ */
+const CONFIG = {
+  // URL do Web App do Google Apps Script (veja google-apps-script.gs nesta pasta).
+  // Cada pedido vira uma linha na planilha e o comprovante vai para uma pasta
+  // do seu Google Drive. Deixe "" para modo de teste (não envia nada).
+  WEBHOOK_URL: "",
+
+  PRECO: 50,
+  PIX_CHAVE: "21973135625",               // o que é copiado
+  PIX_CHAVE_EXIBICAO: "(21) 97313-5625",  // o que aparece na tela
+  PIX_FAVORECIDO: "Magno Silva Loureiro",
+  ARQUIVO_MAX_MB: 25,                     // fotos acima de ~2 MB são reduzidas automaticamente
+  QTD_MAX_POR_ITEM: 999,
+  STORAGE_KEY: "camisa-1esqd-c-pqdt-rascunho"
+};
+
+const OPCOES = {
+  modelo:  ["Masculina", "Feminina", "Infantil"],
+  cor:     ["Bordô", "Bege"],
+  tamanho: ["PP", "P", "M", "G", "GG"]
+};
+const COR_HEX = { "Bordô":"#6B1424", "Bege":"#D8C6A1" };
+const CAMPO_LABEL = { modelo:"Modelo", cor:"Cor", tamanho:"Tamanho" };
+
+/* ============================================================
+   ESTADO (rascunho salvo no navegador, exceto o arquivo)
+   ============================================================ */
+const novoItem = () => ({ modelo:"", cor:"", tamanho:"", qtd:1 });
+function novoId(){
+  return ("P-" + Date.now().toString(36).slice(-4) + Math.random().toString(36).slice(2, 5)).toUpperCase();
+}
+
+const state = loadDraft() || { id:novoId(), nome:"", itens:[novoItem()] };
+state.comprovante = null;
+let processingFile = false;
+
+function loadDraft(){
+  try{
+    const d = JSON.parse(localStorage.getItem(CONFIG.STORAGE_KEY) || "null");
+    if(!d || !Array.isArray(d.itens) || !d.itens.length) return null;
+    d.itens = d.itens.map(i => Object.assign(novoItem(), i, { qtd: clampQtd(i.qtd) }));
+    d.id = d.id || novoId();
+    return d;
+  }catch(_){ return null; }
+}
+function saveDraft(){
+  try{ localStorage.setItem(CONFIG.STORAGE_KEY, JSON.stringify({ id:state.id, nome:state.nome, itens:state.itens })); }catch(_){}
+}
+function clearDraft(){ try{ localStorage.removeItem(CONFIG.STORAGE_KEY); }catch(_){} }
+
+/* ============================================================
+   UTILITÁRIOS
+   ============================================================ */
+const $ = (sel, root) => (root || document).querySelector(sel);
+const brl = v => v.toLocaleString("pt-BR", { style:"currency", currency:"BRL" });
+function clampQtd(n){ n = parseInt(n, 10); return isNaN(n) || n < 1 ? 1 : Math.min(n, CONFIG.QTD_MAX_POR_ITEM); }
+const totalQtd = () => state.itens.reduce((s, i) => s + i.qtd, 0);
+const totalValor = () => totalQtd() * CONFIG.PRECO;
+const itemCompleto = i => !!(i.modelo && i.cor && i.tamanho);
+const plural = (n, s, p) => n + " " + (n === 1 ? s : p);
+function escapeHtml(str){
+  return String(str).replace(/[&<>"']/g, s => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[s]));
+}
+function fmtBytes(b){ return b > 1048576 ? (b/1048576).toFixed(1).replace(".", ",") + " MB" : Math.max(1, Math.round(b/1024)) + " KB"; }
+function descItem(i){ return [i.modelo, i.cor, i.tamanho && ("Tam. " + i.tamanho)].filter(Boolean).join(" · "); }
+function shirtSvg(i, cls){
+  const fill = COR_HEX[i.cor] || "#E6E1D6";
+  const t = i.modelo === "Infantil" ? "translate(24 26) scale(.78) translate(-24 -26)" : "";
+  return `<svg class="${cls}" viewBox="0 0 48 48" aria-hidden="true"><path transform="${t}" fill="${fill}" stroke="#141414" stroke-width="2" stroke-linejoin="round"
+    d="M17 6 L8 10.5 L3 19.5 L9.5 23 L12.5 20 L12.5 42 L35.5 42 L35.5 20 L38.5 23 L45 19.5 L40 10.5 L31 6 C29 9 26.6 10.6 24 10.6 C21.4 10.6 19 9 17 6 Z"/></svg>`;
+}
+/* Nome de guerra = palavras em MAIÚSCULO (ex: "Gustavo Andrade DO VALE" → "DO VALE") */
+function nomeDeGuerra(nome){
+  return nome.trim().split(/\s+/).filter(p =>
+    p.length >= 2 && /\p{L}/u.test(p) && p === p.toLocaleUpperCase("pt-BR") && p !== p.toLocaleLowerCase("pt-BR")
+  ).join(" ");
+}
+
+/* ============================================================
+   TEXTOS FIXOS
+   ============================================================ */
+$("#factPrice").textContent = brl(CONFIG.PRECO).replace(",00", "");
+$("#pixValue").textContent = CONFIG.PIX_CHAVE_EXIBICAO;
+$("#pixName").textContent = CONFIG.PIX_FAVORECIDO;
+
+/* ============================================================
+   1 · NOME
+   ============================================================ */
+const nomeField = $("#nomeField");
+const guerraChip = $("#guerraChip");
+function updateGuerra(){
+  const g = nomeDeGuerra(nomeField.value);
+  guerraChip.classList.toggle("ok", !!g);
+  guerraChip.innerHTML = g ? `Nome de guerra: <b>${escapeHtml(g)}</b>` : "Nome de guerra: —";
+}
+nomeField.value = state.nome;
+nomeField.addEventListener("input", () => {
+  state.nome = nomeField.value;
+  saveDraft(); updateGuerra(); setError("nome", "");
+});
+updateGuerra();
+
+/* ============================================================
+   2 · CAMISAS (itens com quantidade, sem limite)
+   ============================================================ */
+const itemsEl = $("#items");
+
+function renderItens(){
+  itemsEl.innerHTML = state.itens.map((it, idx) => {
+    const grupos = Object.keys(OPCOES).map(campo => {
+      const botoes = OPCOES[campo].map(v => {
+        const dot = campo === "cor" ? `<span class="dot" style="background:${COR_HEX[v]}"></span>` : "";
+        return `<button type="button" class="seg${campo === "tamanho" ? " size" : ""}" data-campo="${campo}" data-valor="${escapeHtml(v)}" aria-pressed="false">${dot}${escapeHtml(v)}</button>`;
+      }).join("");
+      return `<div class="campo" data-campo="${campo}">
+        <div class="campo-label"><span>${CAMPO_LABEL[campo]}</span><span class="campo-erro"></span></div>
+        <div class="seg-group" role="group" aria-label="${CAMPO_LABEL[campo]}">${botoes}</div>
+      </div>`;
+    }).join("");
+    const remove = state.itens.length > 1
+      ? `<button type="button" class="item-remove" data-act="remove" aria-label="Remover item">✕</button>` : "";
+    return `<div class="item" data-idx="${idx}">
+      <div class="item-head">
+        <span class="svg-slot"></span>
+        <div><div class="item-title">Camisa ${state.itens.length > 1 ? idx + 1 : ""}</div><div class="item-resumo"></div></div>
+        ${remove}
+      </div>
+      ${grupos}
+      <div class="qty-line">
+        <div class="stepper">
+          <button type="button" data-act="minus" aria-label="Diminuir quantidade">−</button>
+          <input type="number" inputmode="numeric" min="1" aria-label="Quantidade" value="${it.qtd}">
+          <button type="button" data-act="plus" aria-label="Aumentar quantidade">+</button>
+        </div>
+        <div class="qty-sub"><small>Quantidade × ${brl(CONFIG.PRECO)}</small><b class="subtotal"></b></div>
+      </div>
+    </div>`;
+  }).join("");
+  itemsEl.querySelectorAll(".item").forEach(el => refreshItem(el));
+  updateTotals();
+}
+
+function refreshItem(el){
+  const it = state.itens[+el.dataset.idx];
+  el.querySelectorAll(".seg").forEach(b => {
+    const on = it[b.dataset.campo] === b.dataset.valor;
+    b.classList.toggle("on", on);
+    b.setAttribute("aria-pressed", on);
+  });
+  $(".svg-slot", el).innerHTML = shirtSvg(it, "item-svg");
+  $(".item-resumo", el).textContent = descItem(it) || "Escolha modelo, cor e tamanho";
+  $(".subtotal", el).textContent = brl(it.qtd * CONFIG.PRECO);
+  const input = $("input", el);
+  if(document.activeElement !== input) input.value = it.qtd;
+  el.querySelectorAll(".campo").forEach(g => { if(it[g.dataset.campo]) $(".campo-erro", g).textContent = ""; });
+  if(itemCompleto(it)) el.classList.remove("has-error");
+}
+
+itemsEl.addEventListener("click", e => {
+  const el = e.target.closest(".item");
+  if(!el) return;
+  const idx = +el.dataset.idx;
+  const it = state.itens[idx];
+  const seg = e.target.closest(".seg");
+  const act = e.target.closest("[data-act]");
+  if(seg){
+    it[seg.dataset.campo] = seg.dataset.valor;
+  } else if(act){
+    if(act.dataset.act === "remove"){
+      state.itens.splice(idx, 1);
+      saveDraft(); renderItens();
+      return;
+    }
+    it.qtd = clampQtd(it.qtd + (act.dataset.act === "plus" ? 1 : -1));
+  } else return;
+  refreshItem(el); updateTotals(); saveDraft();
+  if(state.itens.every(itemCompleto)) setError("itens", "");
+});
+itemsEl.addEventListener("input", e => {
+  if(e.target.tagName !== "INPUT") return;
+  const el = e.target.closest(".item");
+  const it = state.itens[+el.dataset.idx];
+  if(e.target.value === "") return;      // deixa apagar para digitar outro número
+  it.qtd = clampQtd(e.target.value);
+  refreshItem(el); updateTotals(); saveDraft();
+});
+itemsEl.addEventListener("focusout", e => {
+  if(e.target.tagName === "INPUT"){ const el = e.target.closest(".item"); if(el) e.target.value = state.itens[+el.dataset.idx].qtd; }
+});
+
+$("#addItem").addEventListener("click", () => {
+  state.itens.push(novoItem());
+  saveDraft(); renderItens();
+  const last = itemsEl.lastElementChild;
+  last.scrollIntoView({ behavior:"smooth", block:"center" });
+});
+
+function updateTotals(){
+  const q = totalQtd(), v = brl(totalValor());
+  $("#itensCount").textContent = plural(q, "camisa", "camisas");
+  $("#totalLabel").textContent = `${plural(q, "camisa", "camisas")} × ${brl(CONFIG.PRECO)}`;
+  $("#totalBox").textContent = v;
+  $("#barCount").textContent = plural(q, "camisa", "camisas");
+  $("#barTotal").textContent = v;
+}
+
+/* ============================================================
+   3 · PAGAMENTO
+   ============================================================ */
+const copyBtn = $("#copyPix");
+copyBtn.addEventListener("click", async () => {
+  const ok = await copyText(CONFIG.PIX_CHAVE);
+  copyBtn.textContent = ok ? "Copiado ✓" : "Copie manualmente";
+  copyBtn.classList.toggle("copied", ok);
+  setTimeout(() => { copyBtn.textContent = "Copiar chave"; copyBtn.classList.remove("copied"); }, 2200);
+});
+async function copyText(txt){
+  try{ await navigator.clipboard.writeText(txt); return true; }
+  catch(_){
+    const ta = document.createElement("textarea");
+    ta.value = txt; ta.style.position = "fixed"; ta.style.opacity = "0";
+    document.body.appendChild(ta); ta.select();
+    let ok = false;
+    try{ ok = document.execCommand("copy"); }catch(__){}
+    ta.remove();
+    return ok;
+  }
+}
+
+const fileInput = $("#fileInput");
+const uploadSlot = $("#uploadSlot");
+fileInput.addEventListener("change", () => { handleFile(fileInput.files[0]); fileInput.value = ""; });
+
+function renderUpload(){
+  const f = state.comprovante;
+  if(processingFile){
+    uploadSlot.innerHTML = `<div class="processing">Preparando arquivo…</div>`;
+    return;
+  }
+  if(!f){
+    uploadSlot.innerHTML = `
+      <button type="button" class="dropzone" id="dropzone">
+        <span class="dropzone-icon"><span>↑</span></span>
+        <strong>Anexar comprovante</strong>
+        <small>Foto, print ou PDF · até ${CONFIG.ARQUIVO_MAX_MB} MB</small>
+      </button>
+      <div class="upload-note">Sem o comprovante, o pedido fica como <b>pagamento pendente</b>.</div>`;
+    const dz = $("#dropzone", uploadSlot);
+    dz.addEventListener("click", () => fileInput.click());
+    ["dragenter", "dragover"].forEach(ev => dz.addEventListener(ev, e => { e.preventDefault(); dz.classList.add("drag"); }));
+    ["dragleave", "drop"].forEach(ev => dz.addEventListener(ev, e => { e.preventDefault(); dz.classList.remove("drag"); }));
+    dz.addEventListener("drop", e => handleFile(e.dataTransfer.files[0]));
+    return;
+  }
+  const thumb = f.previewUrl ? `<img src="${f.previewUrl}" alt="">` : (f.mime === "application/pdf" ? "PDF" : "ARQ");
+  uploadSlot.innerHTML = `
+    <div class="file-row">
+      <div class="file-thumb">${thumb}</div>
+      <div class="file-info">
+        <div class="file-name">${escapeHtml(f.nome)}</div>
+        <div class="file-size">${fmtBytes(f.tamanho)} · anexado ✓</div>
+      </div>
+      <div class="file-actions">
+        <button type="button" class="link-btn" id="swapFile">Trocar</button>
+        <button type="button" class="link-btn" id="removeFile">Remover</button>
+      </div>
+    </div>`;
+  $("#swapFile", uploadSlot).addEventListener("click", () => fileInput.click());
+  $("#removeFile", uploadSlot).addEventListener("click", () => {
+    if(f.previewUrl) URL.revokeObjectURL(f.previewUrl);
+    state.comprovante = null;
+    renderUpload();
+  });
+}
+
+async function handleFile(file){
+  if(!file) return;
+  setError("file", "");
+  const isPdf = file.type === "application/pdf" || /\.pdf$/i.test(file.name);
+  const isImg = file.type.startsWith("image/") || /\.(heic|heif|jpe?g|png|webp)$/i.test(file.name);
+  if(!isImg && !isPdf){ setError("file", "Envie uma foto, print ou PDF."); return; }
+  if(file.size > CONFIG.ARQUIVO_MAX_MB * 1048576){
+    setError("file", `Arquivo com mais de ${CONFIG.ARQUIVO_MAX_MB} MB. Tente um print da tela do comprovante.`);
+    return;
+  }
+  processingFile = true; renderUpload();
+  try{
+    let blob = file, mime = isPdf ? "application/pdf" : (file.type || "image/jpeg"), nome = file.name;
+    // Reduz fotos grandes automaticamente — a pessoa não precisa comprimir nada.
+    if(isImg && file.size > 1.5 * 1048576){
+      try{
+        const c = await compressImage(file);
+        if(c && c.size < file.size){ blob = c; mime = "image/jpeg"; nome = nome.replace(/\.[^.]+$/, "") + ".jpg"; }
+      }catch(_){ /* formato que o navegador não abre (ex: HEIC fora do iPhone): envia o original */ }
+    }
+    const base64 = await blobToBase64(blob);
+    if(state.comprovante && state.comprovante.previewUrl) URL.revokeObjectURL(state.comprovante.previewUrl);
+    state.comprovante = {
+      nome, mime, base64, tamanho:blob.size,
+      previewUrl: /^image\/(jpeg|png|webp|gif)$/.test(mime) ? URL.createObjectURL(blob) : null
+    };
+  }catch(err){
+    console.error(err);
+    setError("file", "Não foi possível ler esse arquivo. Tente outro.");
+  }finally{
+    processingFile = false; renderUpload();
+  }
+}
+
+function compressImage(file, maxSide = 2000, quality = .85){
+  return new Promise((resolve, reject) => {
+    const url = URL.createObjectURL(file);
+    const img = new Image();
+    img.onload = () => {
+      const k = Math.min(1, maxSide / Math.max(img.naturalWidth, img.naturalHeight));
+      const canvas = document.createElement("canvas");
+      canvas.width = Math.round(img.naturalWidth * k);
+      canvas.height = Math.round(img.naturalHeight * k);
+      const ctx = canvas.getContext("2d");
+      ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      URL.revokeObjectURL(url);
+      canvas.toBlob(b => b ? resolve(b) : reject(new Error("toBlob")), "image/jpeg", quality);
+    };
+    img.onerror = () => { URL.revokeObjectURL(url); reject(new Error("load")); };
+    img.src = url;
+  });
+}
+function blobToBase64(blob){
+  return new Promise((resolve, reject) => {
+    const r = new FileReader();
+    r.onload = () => resolve(String(r.result).split(",")[1] || "");
+    r.onerror = reject;
+    r.readAsDataURL(blob);
+  });
+}
+
+/* ============================================================
+   VALIDAÇÃO
+   ============================================================ */
+function setError(key, msg){
+  const box = $("#" + key + "Error");
+  box.textContent = msg;
+  box.classList.toggle("show", !!msg);
+  const block = { nome:"#blockNome", itens:"#blockItens", file:"#blockPagamento" }[key];
+  $(block).classList.toggle("has-error", !!msg);
+}
+
+function validar(){
+  let primeiro = null;
+
+  const nome = state.nome.trim().replace(/\s+/g, " ");
+  let msgNome = "";
+  if(!nome) msgNome = "Informe o nome completo do militar.";
+  else if(nome.split(" ").length < 2) msgNome = "Escreva o nome completo (nome e sobrenome).";
+  else if(!nomeDeGuerra(nome)) msgNome = "Escreva o nome de guerra em MAIÚSCULO. Ex: Gustavo Andrade DO VALE";
+  setError("nome", msgNome);
+  if(msgNome) primeiro = $("#blockNome");
+  else state.nome = nome;
+
+  let itemErro = null;
+  itemsEl.querySelectorAll(".item").forEach(el => {
+    const it = state.itens[+el.dataset.idx];
+    let falta = false;
+    el.querySelectorAll(".campo").forEach(g => {
+      const vazio = !it[g.dataset.campo];
+      $(".campo-erro", g).textContent = vazio ? "escolha uma opção" : "";
+      if(vazio) falta = true;
+    });
+    el.classList.toggle("has-error", falta);
+    if(falta && !itemErro) itemErro = el;
+  });
+  setError("itens", itemErro ? "Complete modelo, cor e tamanho de todas as camisas." : "");
+  if(itemErro && !primeiro) primeiro = itemErro;
+
+  if(processingFile && !primeiro){ setError("file", "Aguarde o comprovante terminar de carregar."); primeiro = $("#blockPagamento"); }
+
+  if(primeiro){
+    primeiro.scrollIntoView({ behavior:"smooth", block:"center" });
+    primeiro.classList.remove("shake"); void primeiro.offsetWidth; primeiro.classList.add("shake");
+    if(primeiro.id === "blockNome") setTimeout(() => nomeField.focus({ preventScroll:true }), 350);
+    return false;
+  }
+  return true;
+}
+
+/* ============================================================
+   CONFIRMAÇÃO / ENVIO
+   ============================================================ */
+const confirmModal = $("#confirmModal");
+const doneModal = $("#doneModal");
+const btnConfirm = $("#btnConfirm");
+const sendError = $("#sendError");
+
+function openModal(m){ m.classList.add("show"); document.body.classList.add("modal-open"); }
+function closeModal(m){ m.classList.remove("show"); if(!document.querySelector(".modal.show")) document.body.classList.remove("modal-open"); }
+
+function resumoHtml(itens, total){
+  const linhas = itens.map(i => `
+    <div class="summary-row">${shirtSvg(i, "mini-svg")}<span class="q">${i.qtd}×</span>
+      <span>${escapeHtml(i.modelo)} · ${escapeHtml(i.cor)} · <b>${escapeHtml(i.tamanho)}</b></span>
+      <span class="v">${brl(i.qtd * CONFIG.PRECO)}</span></div>`).join("");
+  return linhas + `<div class="summary-row total"><span>Total</span><span class="v">${brl(total)}</span></div>`;
+}
+
+$("#btnSend").addEventListener("click", () => {
+  if(!validar()) return;
+  $("#confirmName").innerHTML = `Pedido de <b>${escapeHtml(state.nome)}</b> · ${plural(totalQtd(), "camisa", "camisas")}`;
+  $("#confirmSummary").innerHTML = resumoHtml(state.itens, totalValor());
+  $("#confirmStatus").innerHTML = state.comprovante
+    ? `<span class="status-pill ok">✓ Comprovante anexado</span>`
+    : `<span class="status-pill pend">! Sem comprovante — fica como pagamento pendente</span>`;
+  sendError.classList.remove("show");
+  openModal(confirmModal);
+  btnConfirm.focus();
+});
+$("#btnEdit").addEventListener("click", () => closeModal(confirmModal));
+confirmModal.addEventListener("click", e => { if(e.target === confirmModal && !sending) closeModal(confirmModal); });
+
+function buildPayload(){
+  const f = state.comprovante;
+  return {
+    formulario: "Camisa Comemorativa 1º Esqd C Pqdt",
+    id: state.id,
+    enviado_em: new Date().toISOString(),
+    nome: state.nome.trim(),
+    nome_de_guerra: nomeDeGuerra(state.nome),
+    quantidade: totalQtd(),
+    valor_unitario: CONFIG.PRECO,
+    total: totalValor(),
+    itens: state.itens.map(i => ({ modelo:i.modelo, cor:i.cor, tamanho:i.tamanho, quantidade:i.qtd })),
+    comprovante: f ? { nome:f.nome, mime:f.mime, base64:f.base64 } : null
+  };
+}
+
+// Sem WEBHOOK_URL o pedido não é salvo em lugar nenhum: só permite o "modo teste"
+// rodando no próprio computador; no site publicado, avisa que os pedidos ainda não abriram.
+const RODANDO_LOCAL = /^(localhost|127\.0\.0\.1|\[::1\]|)$/.test(location.hostname);
+
+let sending = false;
+btnConfirm.addEventListener("click", async () => {
+  if(sending) return;
+  if(!CONFIG.WEBHOOK_URL && !RODANDO_LOCAL){
+    sendError.textContent = "Os pedidos ainda não estão abertos. Tente novamente em breve.";
+    sendError.classList.add("show");
+    return;
+  }
+  sending = true;
+  btnConfirm.disabled = true;
+  btnConfirm.innerHTML = `<span class="spinner"></span> Enviando…`;
+  sendError.classList.remove("show");
+
+  const payload = buildPayload();
+  try{
+    if(!CONFIG.WEBHOOK_URL){
+      console.warn("[modo teste] WEBHOOK_URL vazio — pedido NÃO foi enviado.", Object.assign({}, payload, { comprovante: payload.comprovante && "(arquivo omitido)" }));
+      await new Promise(r => setTimeout(r, 900));
+    } else {
+      // "text/plain" evita o preflight de CORS que o Apps Script não responde.
+      // O id do pedido só muda depois de um envio bem-sucedido, então reenviar não duplica.
+      const res = await fetch(CONFIG.WEBHOOK_URL, {
+        method:"POST", headers:{ "Content-Type":"text/plain;charset=utf-8" }, body:JSON.stringify(payload)
+      });
+      let data = null;
+      try{ data = await res.json(); }catch(_){}
+      if(!res.ok || !data || data.status !== "ok") throw new Error((data && data.message) || ("HTTP " + res.status));
+    }
+    closeModal(confirmModal);
+    showDone(payload);
+  }catch(err){
+    console.error("Falha ao enviar pedido:", err);
+    sendError.textContent = "Não foi possível enviar. Verifique sua internet e toque em Confirmar de novo.";
+    sendError.classList.add("show");
+  }finally{
+    sending = false;
+    btnConfirm.disabled = false;
+    btnConfirm.textContent = "Confirmar ✓";
+  }
+});
+
+function showDone(p){
+  const itens = p.itens.map(i => ({ modelo:i.modelo, cor:i.cor, tamanho:i.tamanho, qtd:i.quantidade }));
+  const msg = p.comprovante
+    ? "Recebemos seu pedido e o comprovante. Guarde o número abaixo."
+    : `Pedido registrado como <b>pagamento pendente</b>. Faça o Pix de <b>${brl(p.total)}</b> para ${escapeHtml(CONFIG.PIX_FAVORECIDO)} (chave ${CONFIG.PIX_CHAVE_EXIBICAO}) e envie o comprovante a ele com o número do pedido.`;
+  $("#doneContent").innerHTML = `
+    <div class="done-icon"><span>✓</span></div>
+    <h3 id="doneTitle">Pedido enviado!</h3>
+    <div class="pedido-num">Nº ${escapeHtml(p.id)}</div>
+    <p>${msg}</p>
+    <div class="summary">${resumoHtml(itens, p.total)}</div>
+    <button type="button" class="btn btn-light" id="novoPedido" style="width:100%">Fazer outro pedido</button>`;
+  openModal(doneModal);
+
+  clearDraft();
+  if(state.comprovante && state.comprovante.previewUrl) URL.revokeObjectURL(state.comprovante.previewUrl);
+  state.id = novoId(); state.nome = ""; state.itens = [novoItem()]; state.comprovante = null;
+  nomeField.value = ""; updateGuerra(); renderItens(); renderUpload();
+
+  $("#novoPedido").addEventListener("click", () => {
+    closeModal(doneModal);
+    window.scrollTo({ top:0, behavior:"smooth" });
+  });
+}
+
+/* ============================================================
+   FOTO AMPLIADA / TECLADO / START
+   ============================================================ */
+const lightbox = $("#lightbox");
+$("#openPhoto").addEventListener("click", () => openModal(lightbox));
+lightbox.addEventListener("click", e => { if(e.target.tagName !== "IMG") closeModal(lightbox); });
+document.addEventListener("keydown", e => {
+  if(e.key !== "Escape") return;
+  closeModal(lightbox);
+  if(!sending) closeModal(confirmModal);
+});
+
+renderItens();
+renderUpload();
+
+})();
+</script>
+</body>
+</html>
