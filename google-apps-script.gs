@@ -2,7 +2,7 @@
  * Backend do pedido "Coleção Comemorativa 1º Esqd C Pqdt" (camisas + copos) — Google Apps Script.
  *
  * O que faz a cada pedido recebido do index.html:
- *  - Aba "Pedidos": 1 linha por pedido (militar, qtd de camisas, qtd de copos,
+ *  - Aba "Pedidos": 1 linha por pedido (militar, WhatsApp clicável, qtd de camisas, qtd de copos,
  *    total, forma de pagamento — à vista ou 2x —, link do comprovante, status,
  *    caixa "Conferido" e, nos parcelados, caixa "2ª parcela paga").
  *  - Aba "Camisas": 1 linha por item de camisa (modelo, cor, tamanho, quantidade).
@@ -37,11 +37,11 @@ var CONFIG = {
   TAMANHOS: ["PP", "P", "M", "G", "GG"]
 };
 
-var CAB_PEDIDOS = ["Recebido em", "Pedido", "Nome do militar", "Nome de guerra", "Qtd camisas",
-                   "Qtd copos", "Total (R$)", "Forma de pagamento", "Itens", "Comprovante",
+var CAB_PEDIDOS = ["Recebido em", "Pedido", "Nome do militar", "Nome de guerra", "Contato (WhatsApp)",
+                   "Qtd camisas", "Qtd copos", "Total (R$)", "Forma de pagamento", "Itens", "Comprovante",
                    "Pagamento", "Conferido", "2ª parcela paga"];
 var CAB_CAMISAS = ["Recebido em", "Pedido", "Nome do militar", "Modelo", "Cor", "Tamanho", "Qtd"];
-var COL = { COPOS: 6, TOTAL: 7, FORMA: 8, CONFERIDO: 12, PARCELA2: 13 };
+var COL = { CONTATO: 5, COPOS: 7, TOTAL: 8, FORMA: 9, CONFERIDO: 13, PARCELA2: 14 };
 
 function doPost(e) {
   var lock = LockService.getScriptLock();
@@ -88,11 +88,19 @@ function doPost(e) {
       : "À vista";
     var status = link ? (duasVezes ? "1ª parcela enviada" : "Comprovante enviado") : "Pendente";
 
+    var zap = whatsapp_(data.contato);
+
     abaPedidos.appendRow([
-      agora, data.id, data.nome, data.nome_de_guerra || "", qtdCamisas, copos,
+      agora, data.id, data.nome, data.nome_de_guerra || "", zap.texto, qtdCamisas, copos,
       total, forma, linhasTexto.join("\n"), link, status, false, duasVezes ? false : "—"
     ]);
     var linha = abaPedidos.getLastRow();
+    if (zap.numero) {
+      // Clicar abre o WhatsApp da pessoa já com uma mensagem sobre o pedido
+      var msg = encodeURIComponent("Olá! Sobre o seu pedido " + data.id + " da Coleção Comemorativa 1º Esqd C Pqdt:");
+      abaPedidos.getRange(linha, COL.CONTATO)
+        .setFormula('=HYPERLINK("https://wa.me/' + zap.numero + '?text=' + msg + '","' + zap.texto + '")');
+    }
     abaPedidos.getRange(linha, COL.TOTAL).setNumberFormat('"R$" #,##0.00');
     abaPedidos.getRange(linha, COL.CONFERIDO).insertCheckboxes();
     if (duasVezes) abaPedidos.getRange(linha, COL.PARCELA2).insertCheckboxes();
@@ -204,14 +212,16 @@ function atualizarResumo() {
 /* ---------------- auxiliares ---------------- */
 
 /**
- * Aba "Pedidos" com o cabeçalho atual. Migra a versão antiga (só camisas) sem perder
- * linhas: insere as colunas "Qtd copos" e "Forma de pagamento" e acrescenta
- * "2ª parcela paga" no fim. Pedidos antigos ficam com essas colunas em branco.
+ * Aba "Pedidos" com o cabeçalho atual. Migra versões antigas sem perder linhas:
+ * insere as colunas "Contato (WhatsApp)", "Qtd copos" e "Forma de pagamento" e
+ * acrescenta "2ª parcela paga" no fim. Pedidos antigos ficam com elas em branco.
  */
 function obterAbaPedidos_(ss) {
   var aba = obterAba_(ss, "Pedidos", CAB_PEDIDOS);
   var cab = function () { return aba.getRange(1, 1, 1, Math.max(aba.getLastColumn(), 1)).getValues()[0]; };
   var mudou = false;
+  // a ordem importa: cada verificação assume que as colunas anteriores já existem
+  if (cab()[COL.CONTATO - 1] !== "Contato (WhatsApp)") { aba.insertColumnAfter(COL.CONTATO - 1); mudou = true; }
   if (cab()[COL.COPOS - 1] !== "Qtd copos") { aba.insertColumnAfter(COL.COPOS - 1); mudou = true; }
   if (cab()[COL.FORMA - 1] !== "Forma de pagamento") { aba.insertColumnAfter(COL.FORMA - 1); mudou = true; }
   if (mudou || cab()[COL.PARCELA2 - 1] !== CAB_PEDIDOS[COL.PARCELA2 - 1]) {
@@ -263,6 +273,15 @@ function salvarComprovante_(data) {
   var nomeArquivo = data.id + " — " + data.nome + ext;
   var blob = Utilities.newBlob(Utilities.base64Decode(c.base64), c.mime || "application/octet-stream", nomeArquivo);
   return pastaComprovantes_().createFile(blob).getUrl();
+}
+
+/** Normaliza o celular: "(21) 99999-8888" → { numero: "5521999998888", texto: "(21) 99999-8888" }. */
+function whatsapp_(valor) {
+  var d = String(valor || "").replace(/\D/g, "");
+  if (d.length > 11 && d.indexOf("55") === 0) d = d.slice(2);
+  if (d.length !== 10 && d.length !== 11) return { numero: "", texto: String(valor || "") };
+  var texto = "(" + d.slice(0, 2) + ") " + d.slice(2, d.length - 4) + "-" + d.slice(-4);
+  return { numero: "55" + d, texto: texto };
 }
 
 function json_(obj) {
