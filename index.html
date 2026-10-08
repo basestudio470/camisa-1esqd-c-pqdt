@@ -677,6 +677,12 @@ img{ max-width:100%; }
           <div class="guerra-chip" id="guerraChip"></div>
         </div>
         <div class="field-error" id="nomeError"></div>
+
+        <label class="field-label" for="contatoField" style="margin-top:18px">WhatsApp para contato<span class="required-mark">*</span></label>
+        <input class="input-field" id="contatoField" type="tel" inputmode="tel" autocomplete="tel-national"
+               placeholder="(21) 99999-9999" maxlength="16">
+        <div class="field-example" style="margin-top:8px">Usado só para falar com você sobre o pedido e o pagamento.</div>
+        <div class="field-error" id="contatoError"></div>
       </div>
     </section>
 
@@ -809,7 +815,7 @@ function novoId(){
   return ("P-" + Date.now().toString(36).slice(-4) + Math.random().toString(36).slice(2, 5)).toUpperCase();
 }
 
-const state = loadDraft() || { id:novoId(), nome:"", itens:[], copos:0, parcelado:false };
+const state = loadDraft() || { id:novoId(), nome:"", contato:"", itens:[], copos:0, parcelado:false };
 state.comprovante = null;
 let processingFile = false;
 
@@ -824,11 +830,12 @@ function loadDraft(){
     d.parcelado = !!d.parcelado;
     d.id = d.id || novoId();
     d.nome = d.nome || "";
+    d.contato = d.contato || "";
     return d;
   }catch(_){ return null; }
 }
 function saveDraft(){
-  try{ localStorage.setItem(CONFIG.STORAGE_KEY, JSON.stringify({ id:state.id, nome:state.nome, itens:state.itens, copos:state.copos, parcelado:state.parcelado })); }catch(_){}
+  try{ localStorage.setItem(CONFIG.STORAGE_KEY, JSON.stringify({ id:state.id, nome:state.nome, contato:state.contato, itens:state.itens, copos:state.copos, parcelado:state.parcelado })); }catch(_){}
 }
 function clearDraft(){ try{ localStorage.removeItem(CONFIG.STORAGE_KEY); }catch(_){} }
 
@@ -926,6 +933,26 @@ nomeField.addEventListener("input", () => {
   saveDraft(); updateGuerra(); setError("nome", "");
 });
 updateGuerra();
+
+/* WhatsApp: máscara (DD) 99999-9999 enquanto digita */
+const contatoField = $("#contatoField");
+const soDigitos = v => String(v || "").replace(/\D/g, "").replace(/^55(?=\d{10,11}$)/, "").slice(0, 11);
+function mascaraTelefone(v){
+  const d = soDigitos(v);
+  if(d.length <= 2) return d.length ? "(" + d : "";
+  if(d.length <= 6) return `(${d.slice(0, 2)}) ${d.slice(2)}`;
+  if(d.length <= 10) return `(${d.slice(0, 2)}) ${d.slice(2, 6)}-${d.slice(6)}`;   // fixo / digitando
+  return `(${d.slice(0, 2)}) ${d.slice(2, 7)}-${d.slice(7)}`;                     // celular
+}
+contatoField.value = state.contato;
+contatoField.addEventListener("input", e => {
+  let d = soDigitos(contatoField.value);
+  // apagar um "(", ")", " " ou "-" não mudaria nada: apaga o dígito anterior
+  if(e.inputType === "deleteContentBackward" && d === soDigitos(state.contato)) d = d.slice(0, -1);
+  contatoField.value = mascaraTelefone(d);
+  state.contato = contatoField.value;
+  saveDraft(); setError("contato", "");
+});
 
 /* ============================================================
    2 · CAMISAS (itens com quantidade, sem limite)
@@ -1236,8 +1263,8 @@ function setError(key, msg){
   const box = $("#" + key + "Error");
   box.textContent = msg;
   box.classList.toggle("show", !!msg);
-  const block = { nome:"#blockNome", itens:"#blockItens", file:"#blockPagamento" }[key];
-  $(block).classList.toggle("has-error", !!msg);
+  const block = box.closest(".block");
+  block.classList.toggle("has-error", !!block.querySelector(".field-error.show"));
 }
 function itemErroAtual(){
   const err = $("#itensError");
@@ -1257,6 +1284,13 @@ function validar(){
   setError("nome", msgNome);
   if(msgNome) primeiro = $("#blockNome");
   else state.nome = nome;
+
+  const tel = soDigitos(state.contato);
+  let msgContato = "";
+  if(!tel) msgContato = "Informe um WhatsApp para contato.";
+  else if(tel.length < 10 || (tel.length === 11 && tel[2] !== "9")) msgContato = "Confira o número: DDD + celular. Ex: (21) 99999-9999";
+  setError("contato", msgContato);
+  if(msgContato && !primeiro) primeiro = $("#blockNome");
 
   let itemErro = null;
   itemsEl.querySelectorAll(".item").forEach(el => {
@@ -1281,7 +1315,7 @@ function validar(){
   if(primeiro){
     primeiro.scrollIntoView({ behavior:"smooth", block:"center" });
     primeiro.classList.remove("shake"); void primeiro.offsetWidth; primeiro.classList.add("shake");
-    if(primeiro.id === "blockNome") setTimeout(() => nomeField.focus({ preventScroll:true }), 350);
+    if(primeiro.id === "blockNome") setTimeout(() => (msgNome ? nomeField : contatoField).focus({ preventScroll:true }), 350);
     return false;
   }
   return true;
@@ -1334,6 +1368,7 @@ function buildPayload(){
     enviado_em: new Date().toISOString(),
     nome: state.nome.trim(),
     nome_de_guerra: nomeDeGuerra(state.nome),
+    contato: mascaraTelefone(state.contato),
     quantidade: qtdCamisas(),
     copos: state.copos,
     preco_camisa: CONFIG.PRECO_CAMISA,
@@ -1410,8 +1445,8 @@ function showDone(p){
 
   clearDraft();
   if(state.comprovante && state.comprovante.previewUrl) URL.revokeObjectURL(state.comprovante.previewUrl);
-  state.id = novoId(); state.nome = ""; state.itens = []; state.copos = 0; state.parcelado = false; state.comprovante = null;
-  nomeField.value = ""; updateGuerra(); renderItens(); refreshCopos(); renderUpload();
+  state.id = novoId(); state.nome = ""; state.contato = ""; state.itens = []; state.copos = 0; state.parcelado = false; state.comprovante = null;
+  nomeField.value = ""; contatoField.value = ""; updateGuerra(); renderItens(); refreshCopos(); renderUpload();
 
   $("#novoPedido").addEventListener("click", () => {
     closeModal(doneModal);
