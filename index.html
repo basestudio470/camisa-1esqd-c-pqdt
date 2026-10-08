@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Camisa Comemorativa 1º Esqd C Pqdt</title>
 <meta name="description" content="Pedido da Camisa Comemorativa do 1º Esqd C Pqdt — escolha, pague via Pix e envie em uma página.">
-<meta name="theme-color" content="#8FD3F4">
+<meta name="theme-color" content="#F5F1E8">
 <link rel="icon" href="assets/brasao-novo-web.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -57,21 +57,9 @@ body{
 button{ font:inherit; color:inherit; }
 body.modal-open{ overflow:hidden; }
 
-/* -------------------------------- topo -------------------------------- */
-.band{
-  display:flex; align-items:center; gap:12px;
-  padding:8px 20px; padding-top:max(8px, env(safe-area-inset-top));
-  background:var(--sky); border-bottom:3px solid var(--ink);
-}
-.band img{ height:40px; width:auto; display:block; }
-.band-text{ display:flex; flex-direction:column; line-height:1; }
-.band-unit{ font-family:var(--font-display); font-weight:800; font-size:19px; letter-spacing:.5px; text-transform:uppercase; }
-.band-unit b{ color:var(--ink); }
-.band-sub{ font-family:var(--font-display); font-weight:600; font-size:12.5px; letter-spacing:1.5px; text-transform:uppercase; color:var(--ink-dim); margin-top:3px; }
-
 /* -------------------------------- layout -------------------------------- */
 .page{
-  max-width:1120px; margin:0 auto; padding:28px 20px 0;
+  max-width:1120px; margin:0 auto; padding:28px 20px 0; padding-top:max(28px, env(safe-area-inset-top));
   display:grid; grid-template-columns:1fr; gap:28px;
 }
 @media (min-width:960px){
@@ -384,8 +372,6 @@ body.modal-open{ overflow:hidden; }
 }
 
 @media (max-width:560px){
-  .band{ padding:8px 16px; }
-  .band img{ height:36px; }
   .page{ padding:22px 16px 0; }
   .block-body{ padding:14px; }
   .item{ padding:12px 12px 14px; }
@@ -403,14 +389,6 @@ body.modal-open{ overflow:hidden; }
 </style>
 </head>
 <body>
-
-<header class="band">
-  <img src="assets/brasao-novo-web.png" alt="Brasão do 1º Esqd C Pqdt">
-  <div class="band-text">
-    <span class="band-unit"><b>1º</b> Esqd C Pqdt</span>
-    <span class="band-sub">Camisa Comemorativa</span>
-  </div>
-</header>
 
 <div class="page">
   <!-- ===================== CAPA ===================== -->
