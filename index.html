@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Camisa Comemorativa 1º Esqd C Pqdt</title>
-<meta name="description" content="Pedido da Camisa Comemorativa do 1º Esqd C Pqdt — escolha, pague via Pix e envie em uma página.">
+<title>Coleção Comemorativa 1º Esqd C Pqdt</title>
+<meta name="description" content="Camisa Comemorativa e Copo Térmico 4 em 1 do 1º Esqd C Pqdt — escolha, pague via Pix e envie em uma página.">
 <meta name="theme-color" content="#F5F1E8">
 <link rel="icon" href="assets/brasao-novo-web.png">
 
@@ -36,6 +36,7 @@
 
   --radius-sm: 8px;
   --radius-md: 14px;
+  --radius-lg: 20px;
   --shadow-hard: 4px 4px 0 var(--ink);
   --shadow-hard-sm: 2px 2px 0 var(--ink);
   --ease: cubic-bezier(.22,.9,.32,1);
@@ -56,27 +57,25 @@ body{
 }
 button{ font:inherit; color:inherit; }
 body.modal-open{ overflow:hidden; }
+img{ max-width:100%; }
 
 /* -------------------------------- layout -------------------------------- */
-.page{
-  max-width:1120px; margin:0 auto; padding:28px 20px 0; padding-top:max(28px, env(safe-area-inset-top));
-  display:grid; grid-template-columns:1fr; gap:28px;
+.wrap{
+  max-width:1080px; margin:0 auto;
+  padding:28px 20px 0; padding-top:max(28px, env(safe-area-inset-top));
+  display:flex; flex-direction:column; gap:30px;
 }
-@media (min-width:960px){
-  .page{ grid-template-columns:minmax(0, 1fr) minmax(0, 1.05fr); gap:44px; padding-top:40px; align-items:start; }
-  .hero{ position:sticky; top:24px; }
-}
-
-/* -------------------------------- capa -------------------------------- */
-.hero{ text-align:center; }
-.hero-brasao{ width:100px; height:auto; display:block; margin:0 auto 12px; filter:drop-shadow(3px 3px 0 rgba(20,20,20,.18)); }
 .kicker{
   font-family:var(--font-display); font-weight:700; letter-spacing:2.5px;
   font-size:13.5px; text-transform:uppercase; color:var(--red-dark); margin-bottom:8px;
 }
+
+/* -------------------------------- capa -------------------------------- */
+.hero{ text-align:center; max-width:720px; margin:0 auto; }
+.hero-brasao{ width:100px; height:auto; display:block; margin:0 auto 12px; filter:drop-shadow(3px 3px 0 rgba(20,20,20,.18)); }
 .hero-title{
   font-family:var(--font-display); font-weight:800; text-transform:uppercase;
-  font-size:clamp(2.2rem, 8vw, 3.3rem); line-height:.95; margin:0 0 20px; letter-spacing:.3px;
+  font-size:clamp(2.3rem, 8.5vw, 3.6rem); line-height:.95; margin:0 0 16px; letter-spacing:.3px;
 }
 .hero-title span{
   display:inline-block; margin-top:6px;
@@ -84,10 +83,71 @@ body.modal-open{ overflow:hidden; }
   padding:2px 14px 4px; border:2px solid var(--ink); box-shadow:var(--shadow-hard-sm);
   transform:rotate(-1.5deg);
 }
+.hero-lead{ font-size:17px; line-height:1.5; color:var(--ink-dim); margin:0 auto 20px; max-width:520px; }
+.motto{
+  font-family:var(--font-display); font-weight:700; font-size:14px; letter-spacing:3px; text-transform:uppercase;
+  color:var(--ink-faint); margin:0 0 22px;
+}
+.motto i{ font-style:normal; color:var(--red); margin:0 6px; }
+.picks{ display:grid; grid-template-columns:1fr 1fr; gap:12px; text-align:left; }
+.pick{
+  display:flex; flex-direction:column; text-decoration:none; color:inherit;
+  background:var(--white); border:2px solid var(--ink); border-radius:var(--radius-md);
+  box-shadow:var(--shadow-hard); overflow:hidden;
+  transition:transform .15s var(--ease), box-shadow .15s var(--ease);
+}
+.pick:hover{ transform:translate(-1px,-1px); box-shadow:5px 5px 0 var(--ink); }
+.pick:active{ transform:translate(2px,2px); box-shadow:var(--shadow-hard-sm); }
+.pick-img{ aspect-ratio:4/3; background:var(--paper-2); overflow:hidden; border-bottom:2px solid var(--ink); position:relative; }
+.pick-img img{ width:100%; height:100%; object-fit:cover; display:block; }
+.pick-img.copo{ background:#fff; }
+.pick-img.copo img{ object-fit:contain; padding:6px 0; }
+.pick-badge{
+  position:absolute; top:8px; left:8px;
+  font-family:var(--font-display); font-weight:800; font-size:12px; letter-spacing:1px; text-transform:uppercase;
+  background:var(--yellow); border:2px solid var(--ink); border-radius:999px; padding:1px 9px;
+}
+.pick-body{ padding:10px 12px 12px; display:flex; flex-direction:column; gap:2px; }
+.pick-name{ font-family:var(--font-display); font-weight:800; font-size:18px; text-transform:uppercase; line-height:1.05; }
+.pick-price{ font-family:var(--font-display); font-weight:800; font-size:22px; color:var(--red); }
+.pick-go{ font-size:13px; font-weight:600; color:var(--ink-dim); }
+
+/* -------------------------------- vitrines -------------------------------- */
+.product{
+  display:grid; grid-template-columns:1fr; gap:20px;
+  background:var(--white); border:2px solid var(--ink); border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-hard); padding:18px;
+}
+.product.dark{ background:var(--ink); color:var(--white); box-shadow:4px 4px 0 var(--red); }
+@media (min-width:860px){
+  .product{ grid-template-columns:1.1fr 1fr; gap:32px; padding:26px; align-items:center; }
+  .product.dark{ grid-template-columns:1fr 1.1fr; }
+  .product.dark .product-media{ order:2; }
+}
+.eyebrow{
+  display:inline-flex; align-items:center; gap:8px;
+  font-family:var(--font-display); font-weight:800; font-size:13px; letter-spacing:2px; text-transform:uppercase;
+  color:var(--red-dark); margin-bottom:6px;
+}
+.product.dark .eyebrow{ color:var(--yellow); }
+.eyebrow .new{ background:var(--yellow); color:var(--ink); border-radius:999px; padding:1px 9px; letter-spacing:1px; }
+.product h2{
+  font-family:var(--font-display); font-weight:800; text-transform:uppercase;
+  font-size:clamp(2rem, 6.5vw, 2.8rem); line-height:.95; margin:0 0 10px;
+}
+.price-line{ display:flex; align-items:baseline; gap:8px; margin-bottom:12px; }
+.price-big{ font-family:var(--font-display); font-weight:800; font-size:42px; line-height:1; color:var(--red); }
+.product.dark .price-big{ color:var(--yellow); }
+.price-line small{ font-size:14px; color:var(--ink-dim); }
+.product.dark .price-line small{ color:#bdb8ae; }
+.product p.desc{ font-size:16px; line-height:1.55; color:var(--ink-dim); margin:0 0 16px; }
+.product.dark p.desc{ color:#d8d3c9; }
+.product p.desc b{ color:var(--ink); }
+.product.dark p.desc b{ color:var(--white); }
+
 .photo-card{
   position:relative; display:block; width:100%; padding:0; cursor:zoom-in;
-  border:2px solid var(--ink); border-radius:var(--radius-md); overflow:hidden;
-  box-shadow:var(--shadow-hard); background:var(--paper-2);
+  border:2px solid var(--ink); border-radius:var(--radius-md); overflow:hidden; background:var(--paper-2);
 }
 .photo-card img{ width:100%; display:block; height:auto; }
 .zoom-tag{
@@ -95,30 +155,108 @@ body.modal-open{ overflow:hidden; }
   font-family:var(--font-display); font-weight:700; font-size:13px; letter-spacing:1px; text-transform:uppercase;
   background:var(--yellow); color:var(--ink); border:2px solid var(--ink); border-radius:999px; padding:3px 11px;
 }
-.facts{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:18px 0; }
+.facts{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:0 0 18px; }
 .fact{
-  background:var(--white); border:2px solid var(--ink); border-radius:var(--radius-sm);
-  padding:10px 6px; display:flex; flex-direction:column; gap:2px;
+  background:var(--paper); border:2px solid var(--ink); border-radius:var(--radius-sm);
+  padding:9px 6px; display:flex; flex-direction:column; gap:2px; text-align:center;
 }
-.fact b{ font-family:var(--font-display); font-weight:800; font-size:23px; line-height:1; }
-.fact b.price{ color:var(--red); }
+.fact b{ font-family:var(--font-display); font-weight:800; font-size:21px; line-height:1; }
 .fact span{ font-size:12.5px; color:var(--ink-dim); line-height:1.3; }
+
+.duo{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.duo .photo-card{ background:#fff; border-color:#3a3a3a; }
+.duo .photo-card img{ aspect-ratio:800/1027; object-fit:cover; }
+.side-tag{
+  position:absolute; left:8px; top:8px;
+  font-family:var(--font-display); font-weight:800; font-size:12px; letter-spacing:1.5px; text-transform:uppercase;
+  background:var(--ink); color:var(--white); border-radius:999px; padding:2px 10px;
+}
+.features{ display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin:0 0 18px; }
+.feature{ text-align:center; }
+.feature-img{
+  aspect-ratio:1/1; border-radius:var(--radius-sm); overflow:hidden; background:#0b1a33;
+  border:2px solid #3a3a3a;
+}
+.feature-img img{ width:100%; height:100%; object-fit:cover; display:block; }
+.feature span{
+  display:block; margin-top:6px; font-family:var(--font-display); font-weight:700; font-size:13.5px;
+  letter-spacing:.5px; text-transform:uppercase; line-height:1.1;
+}
+.checks{ list-style:none; margin:0 0 18px; padding:0; display:flex; flex-direction:column; gap:7px; font-size:15px; }
+.checks li{ display:flex; gap:9px; align-items:flex-start; }
+.checks li::before{
+  content:"✓"; flex-shrink:0; width:20px; height:20px; border-radius:50%;
+  background:var(--yellow); color:var(--ink); font-weight:800; font-size:12px;
+  display:inline-flex; align-items:center; justify-content:center; margin-top:1px;
+}
+
+/* -------------------------------- kit -------------------------------- */
+.kit{
+  display:flex; align-items:center; gap:18px; flex-wrap:wrap;
+  background:var(--yellow); border:2px solid var(--ink); border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-hard); padding:18px 20px;
+}
+.kit-thumbs{ display:flex; flex-shrink:0; }
+.kit-thumbs img{
+  width:64px; height:64px; object-fit:cover; border-radius:50%; border:2px solid var(--ink); background:#fff;
+}
+.kit-thumbs img + img{ margin-left:-14px; object-fit:contain; }
+.kit-text{ flex:1; min-width:200px; }
+.kit-text b{ display:block; font-family:var(--font-display); font-weight:800; font-size:24px; text-transform:uppercase; line-height:1; }
+.kit-text span{ font-size:15px; color:var(--ink-dim); }
+.kit-text em{ font-style:normal; font-weight:700; color:var(--ink); }
+.kit-text strong{ display:inline-block; margin-top:6px; font-family:var(--font-display); font-weight:800; font-size:17px; letter-spacing:.4px; text-transform:uppercase; background:var(--ink); color:var(--yellow); padding:2px 10px; border-radius:6px; }
+
+/* -------------------------------- parcelamento -------------------------------- */
+.parcel-pill{
+  display:inline-flex; align-items:center; gap:7px; margin:-2px 0 14px;
+  font-size:13.5px; font-weight:600; line-height:1.3;
+  border:2px dashed var(--ink); border-radius:999px; padding:4px 12px; background:var(--paper);
+}
+.parcel-pill b{ color:var(--red-dark); }
+.product.dark .parcel-pill{ background:transparent; border-color:var(--yellow); color:#e9e4da; }
+.product.dark .parcel-pill b{ color:var(--yellow); }
+.pay-choice{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:12px; }
+.pay-opt{
+  display:flex; flex-direction:column; align-items:flex-start; gap:2px; text-align:left;
+  padding:11px 12px; cursor:pointer; border:2px solid var(--ink); border-radius:var(--radius-sm); background:var(--white);
+  transition:background .15s, color .15s;
+}
+.pay-opt small{ font-size:12.5px; color:var(--ink-dim); }
+.pay-opt b{ font-family:var(--font-display); font-weight:800; font-size:22px; line-height:1.05; }
+.pay-opt.on{ background:var(--ink); color:var(--white); }
+.pay-opt.on small{ color:#cfcac0; }
+.pay-opt.on b{ color:var(--yellow); }
+.pay-opt:focus-visible{ outline:3px solid var(--yellow); outline-offset:2px; }
+.pay-note{
+  font-size:14px; line-height:1.5; color:var(--ink); background:#fff8cf;
+  border:2px solid var(--ink); border-radius:var(--radius-sm); padding:10px 12px; margin-bottom:14px;
+}
+.tip{
+  display:flex; gap:10px; align-items:flex-start; font-size:14px; line-height:1.45; color:var(--ink-dim);
+  border:2px dashed var(--ink-faint); border-radius:var(--radius-sm); padding:10px 12px; margin-bottom:14px;
+}
+.tip b{ color:var(--ink); }
+.tip button{ margin-left:auto; flex-shrink:0; }
+.total-box small{ font-size:12.5px; color:#a9a49a; }
+
+/* -------------------------------- formulário -------------------------------- */
+.order{ display:flex; flex-direction:column; gap:22px; max-width:720px; width:100%; margin:0 auto; }
+.order-head{ text-align:center; }
+.order-head h2{
+  font-family:var(--font-display); font-weight:800; text-transform:uppercase;
+  font-size:clamp(2rem, 7vw, 2.7rem); line-height:1; margin:0 0 6px;
+}
+.order-head p{ margin:0; color:var(--ink-dim); font-size:15.5px; }
 .how{
-  display:grid; grid-template-columns:repeat(3,1fr); gap:0;
+  display:grid; grid-template-columns:repeat(3,1fr);
   border:2px solid var(--ink); border-radius:var(--radius-sm); overflow:hidden; background:var(--white);
-  text-align:left;
 }
 .how div{ padding:10px 10px 11px; font-size:13px; line-height:1.3; color:var(--ink-dim); }
 .how div + div{ border-left:2px solid var(--ink); }
 .how b{ display:block; font-family:var(--font-display); font-weight:800; font-size:15px; text-transform:uppercase; color:var(--ink); letter-spacing:.4px; }
 .how i{ font-style:normal; color:var(--red); margin-right:3px; }
-.jump{ display:none; margin-top:18px; }
-@media (max-width:959px){ .jump{ display:inline-flex; } }
-.credit{ margin-top:18px; font-size:11.5px; color:var(--ink-faint); }
-.credit b{ color:var(--ink-dim); font-weight:600; }
 
-/* -------------------------------- blocos do pedido -------------------------------- */
-.order{ display:flex; flex-direction:column; gap:22px; }
 .block{
   background:var(--white); border:2px solid var(--ink); border-radius:var(--radius-md);
   box-shadow:var(--shadow-hard); overflow:hidden;
@@ -132,10 +270,12 @@ body.modal-open{ overflow:hidden; }
   transform:rotate(45deg); display:flex; align-items:center; justify-content:center;
 }
 .block-num span{ transform:rotate(-45deg); color:var(--white); font-family:var(--font-display); font-weight:800; font-size:14px; }
-.block-head h2{ margin:0; font-family:var(--font-display); font-weight:800; font-size:20px; letter-spacing:.8px; text-transform:uppercase; }
+.block-head h3{ margin:0; font-family:var(--font-display); font-weight:800; font-size:20px; letter-spacing:.8px; text-transform:uppercase; }
 .block-head small{ margin-left:auto; font-size:13px; color:var(--ink-dim); font-weight:600; }
 .block-body{ padding:16px; }
 .block.has-error{ border-color:var(--red); box-shadow:4px 4px 0 var(--red); }
+.block.flash{ animation:flash 1s var(--ease); }
+@keyframes flash{ 0%,100%{ box-shadow:var(--shadow-hard); } 30%{ box-shadow:0 0 0 6px var(--yellow), var(--shadow-hard); } }
 
 .field-label{
   display:block; font-family:var(--font-display); font-weight:700; font-size:13.5px;
@@ -162,8 +302,12 @@ body.modal-open{ overflow:hidden; }
 .field-error{ display:none; margin-top:10px; color:var(--red-dark); font-weight:600; font-size:14px; }
 .field-error.show{ display:block; }
 
-/* -------------------------------- itens -------------------------------- */
+/* itens de camisa */
 .items{ display:flex; flex-direction:column; gap:14px; }
+.items:empty{ display:none; }
+.empty-note{
+  text-align:center; color:var(--ink-dim); font-size:14.5px; padding:4px 0 2px;
+}
 .item{
   border:2px solid var(--ink); border-radius:var(--radius-md); padding:14px 14px 16px; background:var(--white);
   animation:popIn .3s var(--ease);
@@ -202,7 +346,7 @@ body.modal-open{ overflow:hidden; }
 .seg.on .dot{ border-color:var(--white); }
 
 .qty-line{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:14px; padding-top:12px; border-top:1px dashed var(--ink-faint); }
-.stepper{ display:flex; align-items:center; border:2px solid var(--ink); border-radius:var(--radius-sm); overflow:hidden; }
+.stepper{ display:flex; align-items:center; border:2px solid var(--ink); border-radius:var(--radius-sm); overflow:hidden; flex-shrink:0; }
 .stepper button{
   width:44px; height:44px; border:none; background:var(--paper); cursor:pointer;
   font-family:var(--font-display); font-weight:800; font-size:24px; line-height:1;
@@ -211,7 +355,7 @@ body.modal-open{ overflow:hidden; }
 .stepper input{
   width:56px; height:44px; border:none; border-left:2px solid var(--ink); border-right:2px solid var(--ink);
   text-align:center; font-family:var(--font-display); font-weight:800; font-size:22px; outline:none;
-  -moz-appearance:textfield; appearance:textfield;
+  -moz-appearance:textfield; appearance:textfield; background:var(--white);
 }
 .stepper input::-webkit-outer-spin-button, .stepper input::-webkit-inner-spin-button{ -webkit-appearance:none; margin:0; }
 .qty-sub{ text-align:right; line-height:1.15; }
@@ -224,18 +368,31 @@ body.modal-open{ overflow:hidden; }
   font-family:var(--font-display); font-weight:800; font-size:17px; letter-spacing:.6px; text-transform:uppercase;
   display:flex; align-items:center; justify-content:center; gap:10px;
 }
+.items:empty + .add-item{ margin-top:10px; }
 .add-item:hover{ background:#fff8cf; }
 .add-item span{ width:26px; height:26px; border-radius:50%; background:var(--red); color:var(--white); border:2px solid var(--ink); display:inline-flex; align-items:center; justify-content:center; font-size:18px; line-height:1; }
 .items-hint{ margin-top:10px; font-size:13px; color:var(--ink-dim); text-align:center; }
 
-/* -------------------------------- pagamento -------------------------------- */
+/* copos */
+.copo-row{ display:flex; align-items:center; gap:14px; }
+.copo-thumb{
+  width:70px; height:88px; flex-shrink:0; border:2px solid var(--ink); border-radius:var(--radius-sm);
+  background:#fff; overflow:hidden;
+}
+.copo-thumb img{ width:100%; height:100%; object-fit:cover; display:block; }
+.copo-info{ flex:1; min-width:0; }
+.copo-info b{ display:block; font-family:var(--font-display); font-weight:800; font-size:19px; text-transform:uppercase; line-height:1.05; }
+.copo-info span{ font-size:13.5px; color:var(--ink-dim); }
+.copo-qty{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:14px; padding-top:12px; border-top:1px dashed var(--ink-faint); }
+
+/* pagamento */
 .total-box{
   display:flex; align-items:baseline; justify-content:space-between; gap:12px;
   background:var(--ink); color:var(--white); border-radius:var(--radius-sm);
   padding:14px 16px; margin-bottom:16px;
 }
 .total-box span{ font-size:14.5px; color:#cfcac0; }
-.total-box b{ font-family:var(--font-display); font-weight:800; font-size:32px; color:var(--yellow); line-height:1; }
+.total-box b{ font-family:var(--font-display); font-weight:800; font-size:32px; color:var(--yellow); line-height:1; white-space:nowrap; }
 .pix-key{ display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
 .pix-key-label{ font-family:var(--font-display); font-weight:700; font-size:13px; letter-spacing:1.5px; text-transform:uppercase; color:var(--ink-dim); width:100%; margin-bottom:-6px; }
 .pix-key-value{ font-family:var(--font-display); font-weight:800; font-size:30px; letter-spacing:.5px; line-height:1; }
@@ -273,10 +430,13 @@ body.modal-open{ overflow:hidden; }
 .upload-note{ margin-top:10px; font-size:13px; color:var(--ink-dim); }
 .processing{ font-size:14px; color:var(--ink-dim); padding:14px 0; text-align:center; }
 
+.credit{ text-align:center; font-size:11.5px; color:var(--ink-faint); margin:4px 0 0; }
+.credit b{ color:var(--ink-dim); font-weight:600; }
+
 /* -------------------------------- botões -------------------------------- */
 .btn{
   font-family:var(--font-display); font-weight:700; letter-spacing:.6px; font-size:17px; text-transform:uppercase;
-  cursor:pointer; border:2px solid var(--ink); border-radius:var(--radius-sm);
+  cursor:pointer; border:2px solid var(--ink); border-radius:var(--radius-sm); text-decoration:none;
   min-height:48px; padding:0 22px; display:inline-flex; align-items:center; justify-content:center; gap:10px;
   transition:transform .15s var(--ease), box-shadow .15s var(--ease), background .15s;
 }
@@ -286,10 +446,15 @@ body.modal-open{ overflow:hidden; }
 .btn-primary:disabled{ opacity:.6; cursor:wait; }
 .btn-light{ background:var(--white); box-shadow:var(--shadow-hard-sm); }
 .btn-light:hover{ background:var(--paper-2); }
-.btn:focus-visible, .seg:focus-visible, .dropzone:focus-visible, .photo-card:focus-visible,
+.btn-dark{ background:var(--ink); color:var(--white); box-shadow:var(--shadow-hard-sm); }
+.btn-dark:hover{ background:#333; }
+.product.dark .btn-primary{ box-shadow:2px 2px 0 var(--yellow); border-color:var(--yellow); }
+.btn-block{ width:100%; }
+.btn:focus-visible, .seg:focus-visible, .dropzone:focus-visible, .photo-card:focus-visible, .pick:focus-visible,
 .add-item:focus-visible, .stepper button:focus-visible, .item-remove:focus-visible{
   outline:3px solid var(--yellow); outline-offset:2px;
 }
+.product.dark .photo-card:focus-visible, .product.dark .btn:focus-visible{ outline-color:var(--sky); }
 
 /* -------------------------------- barra fixa -------------------------------- */
 .bar{
@@ -297,11 +462,11 @@ body.modal-open{ overflow:hidden; }
   background:var(--white); border-top:3px solid var(--ink);
   padding:10px 20px; padding-bottom:max(10px, env(safe-area-inset-bottom));
 }
-.bar-inner{ max-width:1120px; margin:0 auto; display:flex; align-items:center; gap:14px; min-height:calc(var(--bar-h) - 23px); }
-.bar-total{ line-height:1.1; }
-.bar-total small{ display:block; font-size:13px; color:var(--ink-dim); }
+.bar-inner{ max-width:1080px; margin:0 auto; display:flex; align-items:center; gap:14px; min-height:calc(var(--bar-h) - 23px); }
+.bar-total{ line-height:1.1; min-width:0; }
+.bar-total small{ display:block; font-size:13px; color:var(--ink-dim); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 .bar-total b{ font-family:var(--font-display); font-weight:800; font-size:27px; }
-.bar .btn{ margin-left:auto; min-height:52px; font-size:18px; padding:0 26px; }
+.bar .btn{ margin-left:auto; min-height:52px; font-size:18px; padding:0 26px; flex-shrink:0; }
 
 /* -------------------------------- modais -------------------------------- */
 .modal{
@@ -326,6 +491,7 @@ body.modal-open{ overflow:hidden; }
 .summary-row{ display:flex; align-items:center; gap:10px; padding:10px 0; border-bottom:1px dashed var(--paper-2); font-size:15px; }
 .summary-row:last-child{ border-bottom:none; }
 .summary-row .mini-svg{ width:28px; height:28px; flex-shrink:0; }
+.summary-row .mini-img{ width:28px; height:36px; flex-shrink:0; object-fit:cover; border-radius:4px; border:1px solid var(--ink); }
 .summary-row .q{ font-family:var(--font-display); font-weight:800; font-size:18px; min-width:30px; }
 .summary-row .v{ margin-left:auto; font-weight:600; white-space:nowrap; }
 .summary-row.total{ font-family:var(--font-display); font-weight:800; font-size:21px; text-transform:uppercase; }
@@ -354,7 +520,7 @@ body.modal-open{ overflow:hidden; }
 }
 
 .lightbox{ align-items:center; padding:16px; background:rgba(20,20,20,.9); }
-.lightbox img{ max-width:min(100%, 1100px); max-height:88vh; object-fit:contain; border:2px solid var(--white); border-radius:var(--radius-sm); }
+.lightbox img{ max-width:min(100%, 1100px); max-height:88vh; object-fit:contain; border:2px solid var(--white); border-radius:var(--radius-sm); background:#fff; }
 .lightbox-close{
   position:absolute; top:max(14px, env(safe-area-inset-top)); right:14px;
   width:44px; height:44px; border-radius:50%; border:2px solid var(--white); background:transparent; color:var(--white);
@@ -372,15 +538,20 @@ body.modal-open{ overflow:hidden; }
 }
 
 @media (max-width:560px){
-  .page{ padding:22px 16px 0; }
+  .wrap{ padding:22px 16px 0; gap:24px; }
+  .product{ padding:14px; }
   .block-body{ padding:14px; }
   .item{ padding:12px 12px 14px; }
   .pix-key-value{ font-size:26px; }
   .pix-key .btn{ margin-left:0; width:100%; }
   .bar{ padding-left:16px; padding-right:16px; }
   .bar .btn{ padding:0 18px; }
-  .fact b{ font-size:20px; }
+  .fact b{ font-size:19px; }
   .how div{ font-size:12px; padding:9px 8px; }
+  .feature span{ font-size:12px; }
+  .price-big{ font-size:38px; }
+  .kit{ padding:16px; }
+  .kit .btn{ width:100%; }
 }
 @media (prefers-reduced-motion:reduce){
   *{ animation:none !important; transition:none !important; }
@@ -390,39 +561,113 @@ body.modal-open{ overflow:hidden; }
 </head>
 <body>
 
-<div class="page">
+<div class="wrap">
   <!-- ===================== CAPA ===================== -->
   <section class="hero">
-    <img class="hero-brasao" src="assets/brasao-novo-web.png" alt="">
+    <img class="hero-brasao" src="assets/brasao-novo-web.png" alt="Brasão do 1º Esqd C Pqdt">
     <div class="kicker">1º Esquadrão de Cavalaria Pára-quedista</div>
-    <h1 class="hero-title">Camisa Comemorativa<br><span>1º Esqd C Pqdt</span></h1>
+    <h1 class="hero-title">Coleção Comemorativa<br><span>1º Esqd C Pqdt</span></h1>
+    <p class="hero-lead">Vista e brinde com o símbolo do Esquadrão. Escolha sua camisa, garanta seu copo e faça tudo nesta página. <b>Levando os dois, você parcela em 2x.</b></p>
 
-    <!-- Para trocar a foto, substitua o arquivo assets/modelos.jpg (mesmo nome). -->
-    <button class="photo-card" id="openPhoto" type="button" aria-label="Ampliar foto das camisas">
-      <img src="assets/modelos.jpg" alt="Camisas comemorativas nas cores bege e bordô, frente e costas">
-      <span class="zoom-tag">Ampliar ⤢</span>
-    </button>
-
-    <div class="facts">
-      <div class="fact"><b class="price" id="factPrice">R$ 50</b><span>por camisa</span></div>
-      <div class="fact"><b>2 cores</b><span>Bordô · Bege</span></div>
-      <div class="fact"><b>PP–GG</b><span>Masc · Fem · Infantil</span></div>
+    <div class="picks">
+      <a class="pick" href="#camisa">
+        <div class="pick-img"><img src="assets/modelos.jpg" alt=""></div>
+        <div class="pick-body">
+          <span class="pick-name">Camisa Comemorativa</span>
+          <span class="pick-price" data-price="camisa"></span>
+          <span class="pick-go">Bordô ou bege · ver ↓</span>
+        </div>
+      </a>
+      <a class="pick" href="#copo">
+        <div class="pick-img copo"><span class="pick-badge">Novo</span><img src="assets/copo-frente.jpg" alt=""></div>
+        <div class="pick-body">
+          <span class="pick-name">Copo Térmico 4 em 1</span>
+          <span class="pick-price" data-price="copo"></span>
+          <span class="pick-go">Gravado frente e verso · ver ↓</span>
+        </div>
+      </a>
     </div>
+  </section>
 
-    <div class="how">
-      <div><b><i>1</i>Escolha</b>modelo, cor, tamanho e quantidade</div>
-      <div><b><i>2</i>Pague</b>via Pix e anexe o comprovante</div>
-      <div><b><i>3</i>Envie</b>e receba o nº do pedido</div>
+  <!-- ===================== VITRINE: CAMISA ===================== -->
+  <section class="product" id="camisa">
+    <div class="product-media">
+      <!-- Para trocar a foto, substitua o arquivo assets/modelos.jpg (mesmo nome). -->
+      <button class="photo-card" type="button" data-zoom="assets/modelos.jpg" aria-label="Ampliar foto das camisas">
+        <img src="assets/modelos.jpg" alt="Camisas comemorativas nas cores bege e bordô, frente e costas">
+        <span class="zoom-tag">Ampliar ⤢</span>
+      </button>
     </div>
+    <div class="product-info">
+      <div class="eyebrow">Vista o Esquadrão</div>
+      <h2>Camisa Comemorativa</h2>
+      <div class="price-line"><span class="price-big" data-price="camisa"></span><small>por camisa</small></div>
+      <div class="parcel-pill">Com o copo junto: <b>parcele em 2x</b></div>
+      <div class="facts">
+        <div class="fact"><b>2 cores</b><span>Bordô · Bege</span></div>
+        <div class="fact"><b>PP–GG</b><span>todos os tamanhos</span></div>
+        <div class="fact"><b>3 modelos</b><span>Masc · Fem · Infantil</span></div>
+      </div>
+      <button type="button" class="btn btn-primary btn-block" data-want="camisa">Quero a camisa →</button>
+    </div>
+  </section>
 
-    <a class="btn btn-primary jump" href="#pedido">Quero pedir ↓</a>
-    <div class="credit">desenvolvido por <b>ComSoc 1ECP</b></div>
+  <!-- ===================== VITRINE: COPO ===================== -->
+  <section class="product dark" id="copo">
+    <div class="product-media">
+      <div class="duo">
+        <button class="photo-card" type="button" data-zoom="assets/copo-frente.jpg" aria-label="Ampliar frente do copo">
+          <img src="assets/copo-frente.jpg" alt="Copo térmico preto com o emblema Centauros Alados gravado">
+          <span class="side-tag">Frente</span>
+        </button>
+        <button class="photo-card" type="button" data-zoom="assets/copo-verso.jpg" aria-label="Ampliar verso do copo">
+          <img src="assets/copo-verso.jpg" alt="Copo térmico preto com a arte Brindamos à morte, ao perigo!">
+          <span class="side-tag">Verso</span>
+        </button>
+      </div>
+    </div>
+    <div class="product-info">
+      <div class="eyebrow"><span class="new">Novo</span> Brinde com o Esquadrão</div>
+      <h2>Copo Térmico 4 em 1</h2>
+      <div class="price-line"><span class="price-big" data-price="copo"></span><small>por copo</small></div>
+      <div class="parcel-pill">Com a camisa junto: <b>parcele em 2x</b></div>
+      <p class="desc">Preto, com gravação dos dois lados: <b>Centauros Alados</b> na frente e <b>“Brindamos à morte, ao perigo!”</b> no verso. Um copo que serve para tudo:</p>
+      <div class="features">
+        <div class="feature"><div class="feature-img"><img src="assets/copo-longneck.jpg" alt=""></div><span>Long neck</span></div>
+        <div class="feature"><div class="feature-img"><img src="assets/copo-lata.jpg" alt=""></div><span>Porta-lata</span></div>
+        <div class="feature"><div class="feature-img"><img src="assets/copo-tampa.jpg" alt=""></div><span>Copo com tampa</span></div>
+        <div class="feature"><div class="feature-img"><img src="assets/copo-abridor.jpg" alt=""></div><span>Abridor no fundo</span></div>
+      </div>
+      <button type="button" class="btn btn-primary btn-block" data-want="copo">Quero o copo →</button>
+    </div>
+  </section>
+
+  <!-- ===================== KIT ===================== -->
+  <section class="kit">
+    <div class="kit-thumbs"><img src="assets/modelos.jpg" alt=""><img src="assets/copo-frente.jpg" alt=""></div>
+    <div class="kit-text">
+      <b>Leve os dois</b>
+      <span>Camisa + copo por <em id="kitPrice"></em>, tudo em um pedido só.</span><br>
+      <strong id="kitParcel"></strong>
+    </div>
+    <button type="button" class="btn btn-dark" data-want="kit">Montar meu kit →</button>
   </section>
 
   <!-- ===================== PEDIDO ===================== -->
   <form class="order" id="pedido" novalidate onsubmit="return false">
+    <div class="order-head">
+      <div class="kicker">Rápido e direto</div>
+      <h2>Faça seu pedido</h2>
+      <p>Camisas e copos no mesmo pedido.</p>
+    </div>
+    <div class="how">
+      <div><b><i>1</i>Escolha</b>camisas e copos</div>
+      <div><b><i>2</i>Pague</b>via Pix e anexe o comprovante</div>
+      <div><b><i>3</i>Envie</b>e receba o nº do pedido</div>
+    </div>
+
     <section class="block" id="blockNome">
-      <div class="block-head"><div class="block-num"><span>1</span></div><h2>Seus dados</h2></div>
+      <div class="block-head"><div class="block-num"><span>1</span></div><h3>Seus dados</h3></div>
       <div class="block-body">
         <label class="field-label" for="nomeField">Nome completo do militar<span class="required-mark">*</span></label>
         <input class="input-field" id="nomeField" type="text" autocomplete="name"
@@ -436,18 +681,41 @@ body.modal-open{ overflow:hidden; }
     </section>
 
     <section class="block" id="blockItens">
-      <div class="block-head"><div class="block-num"><span>2</span></div><h2>Camisas</h2><small id="itensCount"></small></div>
+      <div class="block-head"><div class="block-num"><span>2</span></div><h3>Camisas</h3><small id="itensCount"></small></div>
       <div class="block-body">
         <div class="items" id="items"></div>
-        <button type="button" class="add-item" id="addItem"><span>+</span> Adicionar outra camisa</button>
+        <div class="empty-note" id="itensEmpty">Nenhuma camisa no pedido ainda.</div>
+        <button type="button" class="add-item" id="addItem"><span>+</span> <em id="addItemLabel" style="font-style:normal">Adicionar camisa</em></button>
         <div class="items-hint">Sem limite de quantidade. Use um item para cada combinação de modelo, cor e tamanho.</div>
         <div class="field-error" id="itensError"></div>
       </div>
     </section>
 
-    <section class="block" id="blockPagamento">
-      <div class="block-head"><div class="block-num"><span>3</span></div><h2>Pagamento</h2><small>Pix</small></div>
+    <section class="block" id="blockCopos">
+      <div class="block-head"><div class="block-num"><span>3</span></div><h3>Copos</h3><small id="coposCount"></small></div>
       <div class="block-body">
+        <div class="copo-row">
+          <div class="copo-thumb"><img src="assets/copo-frente.jpg" alt=""></div>
+          <div class="copo-info">
+            <b>Copo Térmico 4 em 1</b>
+            <span>Preto · gravado frente e verso</span>
+          </div>
+        </div>
+        <div class="copo-qty">
+          <div class="stepper" id="coposStepper">
+            <button type="button" data-act="minus" aria-label="Diminuir quantidade de copos">−</button>
+            <input type="number" inputmode="numeric" min="0" aria-label="Quantidade de copos" id="coposInput" value="0">
+            <button type="button" data-act="plus" aria-label="Aumentar quantidade de copos">+</button>
+          </div>
+          <div class="qty-sub"><small id="coposUnit"></small><b id="coposSub"></b></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="blockPagamento">
+      <div class="block-head"><div class="block-num"><span>4</span></div><h3>Pagamento</h3><small>Pix</small></div>
+      <div class="block-body">
+        <div id="parcelSlot"></div>
         <div class="total-box"><span id="totalLabel"></span><b id="totalBox"></b></div>
 
         <div class="pix-key">
@@ -465,6 +733,8 @@ body.modal-open{ overflow:hidden; }
         <div class="field-error" id="fileError"></div>
       </div>
     </section>
+
+    <div class="credit">desenvolvido por <b>ComSoc 1ECP</b></div>
   </form>
 </div>
 
@@ -495,9 +765,9 @@ body.modal-open{ overflow:hidden; }
   <div class="sheet done" id="doneContent"></div>
 </div>
 
-<div class="modal lightbox" id="lightbox" role="dialog" aria-label="Foto das camisas">
+<div class="modal lightbox" id="lightbox" role="dialog" aria-label="Foto ampliada">
   <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Fechar">✕</button>
-  <img src="assets/modelos.jpg" alt="Camisas comemorativas nas cores bege e bordô, frente e costas">
+  <img id="lightboxImg" src="assets/modelos.jpg" alt="">
 </div>
 
 <script>
@@ -505,7 +775,7 @@ body.modal-open{ overflow:hidden; }
 "use strict";
 
 /* ============================================================
-   CONFIGURAÇÃO — edite aqui preço, Pix, webhook etc.
+   CONFIGURAÇÃO — edite aqui preços, Pix, webhook etc.
    ============================================================ */
 const CONFIG = {
   // URL do Web App do Google Apps Script (veja google-apps-script.gs nesta pasta).
@@ -513,11 +783,12 @@ const CONFIG = {
   // do seu Google Drive. Deixe "" para modo de teste (não envia nada).
   WEBHOOK_URL: "https://script.google.com/macros/s/AKfycbwzMNlGhScy1HAR9F7Z--7JoEB6wB8_tylcDRzi2RzvKfDDaUzdUM5FsaAxUJQ0bgLj/exec",
 
-  PRECO: 50,
+  PRECO_CAMISA: 50,
+  PRECO_COPO: 45,
   PIX_CHAVE: "21973135625",               // o que é copiado
   PIX_CHAVE_EXIBICAO: "(21) 97313-5625",  // o que aparece na tela
   PIX_FAVORECIDO: "Magno Silva Loureiro",
-  ARQUIVO_MAX_MB: 25,                     // fotos acima de ~2 MB são reduzidas automaticamente
+  ARQUIVO_MAX_MB: 25,                     // fotos acima de ~1,5 MB são reduzidas automaticamente
   QTD_MAX_POR_ITEM: 999,
   STORAGE_KEY: "camisa-1esqd-c-pqdt-rascunho"
 };
@@ -538,21 +809,26 @@ function novoId(){
   return ("P-" + Date.now().toString(36).slice(-4) + Math.random().toString(36).slice(2, 5)).toUpperCase();
 }
 
-const state = loadDraft() || { id:novoId(), nome:"", itens:[novoItem()] };
+const state = loadDraft() || { id:novoId(), nome:"", itens:[], copos:0, parcelado:false };
 state.comprovante = null;
 let processingFile = false;
 
 function loadDraft(){
   try{
     const d = JSON.parse(localStorage.getItem(CONFIG.STORAGE_KEY) || "null");
-    if(!d || !Array.isArray(d.itens) || !d.itens.length) return null;
-    d.itens = d.itens.map(i => Object.assign(novoItem(), i, { qtd: clampQtd(i.qtd) }));
+    if(!d || !Array.isArray(d.itens)) return null;
+    // rascunho antigo (só camisas): descarta itens totalmente vazios
+    d.itens = d.itens.map(i => Object.assign(novoItem(), i, { qtd: clampQtd(i.qtd) }))
+                     .filter(i => i.modelo || i.cor || i.tamanho || i.qtd > 1);
+    d.copos = clampCopos(d.copos);
+    d.parcelado = !!d.parcelado;
     d.id = d.id || novoId();
+    d.nome = d.nome || "";
     return d;
   }catch(_){ return null; }
 }
 function saveDraft(){
-  try{ localStorage.setItem(CONFIG.STORAGE_KEY, JSON.stringify({ id:state.id, nome:state.nome, itens:state.itens })); }catch(_){}
+  try{ localStorage.setItem(CONFIG.STORAGE_KEY, JSON.stringify({ id:state.id, nome:state.nome, itens:state.itens, copos:state.copos, parcelado:state.parcelado })); }catch(_){}
 }
 function clearDraft(){ try{ localStorage.removeItem(CONFIG.STORAGE_KEY); }catch(_){} }
 
@@ -561,11 +837,19 @@ function clearDraft(){ try{ localStorage.removeItem(CONFIG.STORAGE_KEY); }catch(
    ============================================================ */
 const $ = (sel, root) => (root || document).querySelector(sel);
 const brl = v => v.toLocaleString("pt-BR", { style:"currency", currency:"BRL" });
+const brlCurto = v => brl(v).replace(",00", "");
 function clampQtd(n){ n = parseInt(n, 10); return isNaN(n) || n < 1 ? 1 : Math.min(n, CONFIG.QTD_MAX_POR_ITEM); }
-const totalQtd = () => state.itens.reduce((s, i) => s + i.qtd, 0);
-const totalValor = () => totalQtd() * CONFIG.PRECO;
+function clampCopos(n){ n = parseInt(n, 10); return isNaN(n) || n < 0 ? 0 : Math.min(n, CONFIG.QTD_MAX_POR_ITEM); }
+const qtdCamisas = () => state.itens.reduce((s, i) => s + i.qtd, 0);
+const totalValor = () => qtdCamisas() * CONFIG.PRECO_CAMISA + state.copos * CONFIG.PRECO_COPO;
 const itemCompleto = i => !!(i.modelo && i.cor && i.tamanho);
 const plural = (n, s, p) => n + " " + (n === 1 ? s : p);
+function resumoQtd(camisas, copos){
+  const partes = [];
+  if(camisas) partes.push(plural(camisas, "camisa", "camisas"));
+  if(copos) partes.push(plural(copos, "copo", "copos"));
+  return partes.join(" + ") || "Nenhum item";
+}
 function escapeHtml(str){
   return String(str).replace(/[&<>"']/g, s => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[s]));
 }
@@ -585,11 +869,46 @@ function nomeDeGuerra(nome){
 }
 
 /* ============================================================
-   TEXTOS FIXOS
+   TEXTOS FIXOS (preços vêm do CONFIG)
    ============================================================ */
-$("#factPrice").textContent = brl(CONFIG.PRECO).replace(",00", "");
+document.querySelectorAll('[data-price="camisa"]').forEach(el => el.textContent = brlCurto(CONFIG.PRECO_CAMISA));
+document.querySelectorAll('[data-price="copo"]').forEach(el => el.textContent = brlCurto(CONFIG.PRECO_COPO));
+$("#kitPrice").textContent = brlCurto(CONFIG.PRECO_CAMISA + CONFIG.PRECO_COPO);
+$("#kitParcel").textContent = `ou 2x de ${brl((CONFIG.PRECO_CAMISA + CONFIG.PRECO_COPO) / 2)}`;
+$("#coposUnit").textContent = `Quantidade × ${brl(CONFIG.PRECO_COPO)}`;
 $("#pixValue").textContent = CONFIG.PIX_CHAVE_EXIBICAO;
 $("#pixName").textContent = CONFIG.PIX_FAVORECIDO;
+
+/* ============================================================
+   VITRINES → FORMULÁRIO
+   ============================================================ */
+function destacar(block, alvo){
+  (alvo || block).scrollIntoView({ behavior:"smooth", block:"center" });
+  block.classList.remove("flash"); void block.offsetWidth; block.classList.add("flash");
+}
+function querCamisa(){
+  if(!state.itens.length){ state.itens.push(novoItem()); saveDraft(); renderItens(); }
+  setError("itens", itemErroAtual());
+  const pendente = Array.from(itemsEl.querySelectorAll(".item")).find(el => !itemCompleto(state.itens[+el.dataset.idx]));
+  destacar($("#blockItens"), pendente || itemsEl.lastElementChild);
+}
+function querCopo(){
+  if(state.copos < 1){ state.copos = 1; saveDraft(); refreshCopos(); updateTotals(); }
+  setError("itens", itemErroAtual());
+  destacar($("#blockCopos"));
+}
+document.querySelectorAll("[data-want]").forEach(b => b.addEventListener("click", () => {
+  const w = b.dataset.want;
+  if(w === "camisa") querCamisa();
+  else if(w === "copo") querCopo();
+  else {
+    if(state.copos < 1){ state.copos = 1; refreshCopos(); }
+    if(!state.itens.length){ state.itens.push(novoItem()); renderItens(); }
+    saveDraft(); updateTotals();
+    setError("itens", "");
+    querCamisa();
+  }
+}));
 
 /* ============================================================
    1 · NOME
@@ -625,13 +944,11 @@ function renderItens(){
         <div class="seg-group" role="group" aria-label="${CAMPO_LABEL[campo]}">${botoes}</div>
       </div>`;
     }).join("");
-    const remove = state.itens.length > 1
-      ? `<button type="button" class="item-remove" data-act="remove" aria-label="Remover item">✕</button>` : "";
     return `<div class="item" data-idx="${idx}">
       <div class="item-head">
         <span class="svg-slot"></span>
         <div><div class="item-title">Camisa ${state.itens.length > 1 ? idx + 1 : ""}</div><div class="item-resumo"></div></div>
-        ${remove}
+        <button type="button" class="item-remove" data-act="remove" aria-label="Remover esta camisa">✕</button>
       </div>
       ${grupos}
       <div class="qty-line">
@@ -640,11 +957,13 @@ function renderItens(){
           <input type="number" inputmode="numeric" min="1" aria-label="Quantidade" value="${it.qtd}">
           <button type="button" data-act="plus" aria-label="Aumentar quantidade">+</button>
         </div>
-        <div class="qty-sub"><small>Quantidade × ${brl(CONFIG.PRECO)}</small><b class="subtotal"></b></div>
+        <div class="qty-sub"><small>Quantidade × ${brl(CONFIG.PRECO_CAMISA)}</small><b class="subtotal"></b></div>
       </div>
     </div>`;
   }).join("");
   itemsEl.querySelectorAll(".item").forEach(el => refreshItem(el));
+  $("#itensEmpty").style.display = state.itens.length ? "none" : "block";
+  $("#addItemLabel").textContent = state.itens.length ? "Adicionar outra camisa" : "Adicionar camisa";
   updateTotals();
 }
 
@@ -657,7 +976,7 @@ function refreshItem(el){
   });
   $(".svg-slot", el).innerHTML = shirtSvg(it, "item-svg");
   $(".item-resumo", el).textContent = descItem(it) || "Escolha modelo, cor e tamanho";
-  $(".subtotal", el).textContent = brl(it.qtd * CONFIG.PRECO);
+  $(".subtotal", el).textContent = brl(it.qtd * CONFIG.PRECO_CAMISA);
   const input = $("input", el);
   if(document.activeElement !== input) input.value = it.qtd;
   el.querySelectorAll(".campo").forEach(g => { if(it[g.dataset.campo]) $(".campo-erro", g).textContent = ""; });
@@ -677,6 +996,7 @@ itemsEl.addEventListener("click", e => {
     if(act.dataset.act === "remove"){
       state.itens.splice(idx, 1);
       saveDraft(); renderItens();
+      if(state.itens.every(itemCompleto)) setError("itens", "");
       return;
     }
     it.qtd = clampQtd(it.qtd + (act.dataset.act === "plus" ? 1 : -1));
@@ -698,22 +1018,88 @@ itemsEl.addEventListener("focusout", e => {
 
 $("#addItem").addEventListener("click", () => {
   state.itens.push(novoItem());
-  saveDraft(); renderItens();
-  const last = itemsEl.lastElementChild;
-  last.scrollIntoView({ behavior:"smooth", block:"center" });
+  saveDraft(); renderItens(); setError("itens", "");
+  itemsEl.lastElementChild.scrollIntoView({ behavior:"smooth", block:"center" });
+});
+
+/* ============================================================
+   3 · COPOS
+   ============================================================ */
+const coposInput = $("#coposInput");
+function refreshCopos(){
+  if(document.activeElement !== coposInput) coposInput.value = state.copos;
+  $("#coposSub").textContent = brl(state.copos * CONFIG.PRECO_COPO);
+  $("#coposCount").textContent = state.copos ? plural(state.copos, "copo", "copos") : "";
+}
+$("#coposStepper").addEventListener("click", e => {
+  const act = e.target.closest("[data-act]");
+  if(!act) return;
+  state.copos = clampCopos(state.copos + (act.dataset.act === "plus" ? 1 : -1));
+  refreshCopos(); updateTotals(); saveDraft(); setError("itens", itemErroAtual());
+});
+coposInput.addEventListener("input", () => {
+  if(coposInput.value === "") return;
+  state.copos = clampCopos(coposInput.value);
+  refreshCopos(); updateTotals(); saveDraft();
+});
+coposInput.addEventListener("focusout", () => { coposInput.value = state.copos; });
+
+/* ============================================================
+   TOTAIS
+   ============================================================ */
+/* Parcelamento em 2x: só para pedidos com camisa E copo. */
+const podeParcelar = () => qtdCamisas() > 0 && state.copos > 0;
+const parcelado = () => podeParcelar() && state.parcelado;
+const valorParcela = total => Math.round(total * 100 / 2) / 100;
+
+function renderParcel(){
+  const slot = $("#parcelSlot");
+  const total = totalValor();
+  if(podeParcelar()){
+    const p = valorParcela(total);
+    slot.innerHTML = `
+      <label class="field-label">Forma de pagamento</label>
+      <div class="pay-choice" role="group" aria-label="Forma de pagamento">
+        <button type="button" class="pay-opt${state.parcelado ? "" : " on"}" data-parcel="0" aria-pressed="${!state.parcelado}">
+          <small>À vista</small><b>${brl(total)}</b></button>
+        <button type="button" class="pay-opt${state.parcelado ? " on" : ""}" data-parcel="1" aria-pressed="${state.parcelado}">
+          <small>Parcelado</small><b>2x de ${brl(p)}</b></button>
+      </div>
+      ${state.parcelado ? `<div class="pay-note">Pague agora a <b>1ª parcela de ${brl(p)}</b> e anexe o comprovante.
+        A <b>2ª parcela de ${brl(total - p)}</b> é paga depois, pelo mesmo Pix.</div>` : ""}`;
+  } else if(qtdCamisas() > 0 || state.copos > 0){
+    const falta = qtdCamisas() > 0 ? "copo" : "camisa";
+    slot.innerHTML = `<div class="tip"><span>💡 Adicionando ${falta === "copo" ? "um <b>copo</b>" : "uma <b>camisa</b>"} ao pedido, você pode <b>parcelar em 2x</b>.</span>
+      <button type="button" class="link-btn" data-add="${falta}">Adicionar</button></div>`;
+  } else {
+    slot.innerHTML = "";
+  }
+}
+$("#parcelSlot").addEventListener("click", e => {
+  const opt = e.target.closest("[data-parcel]");
+  if(opt){ state.parcelado = opt.dataset.parcel === "1"; saveDraft(); updateTotals(); return; }
+  const add = e.target.closest("[data-add]");
+  if(add){ if(add.dataset.add === "copo") querCopo(); else querCamisa(); updateTotals(); }
 });
 
 function updateTotals(){
-  const q = totalQtd(), v = brl(totalValor());
-  $("#itensCount").textContent = plural(q, "camisa", "camisas");
-  $("#totalLabel").textContent = `${plural(q, "camisa", "camisas")} × ${brl(CONFIG.PRECO)}`;
-  $("#totalBox").textContent = v;
-  $("#barCount").textContent = plural(q, "camisa", "camisas");
+  const qc = qtdCamisas(), total = totalValor(), v = brl(total);
+  $("#itensCount").textContent = qc ? plural(qc, "camisa", "camisas") : "";
+  renderParcel();
+  if(parcelado()){
+    $("#totalLabel").innerHTML = `Pague agora · 1ª de 2 parcelas<br><small>Total do pedido: ${v}</small>`;
+    $("#totalBox").textContent = brl(valorParcela(total));
+    $("#barCount").textContent = `2x de ${brl(valorParcela(total))} · ${resumoQtd(qc, state.copos)}`;
+  } else {
+    $("#totalLabel").textContent = resumoQtd(qc, state.copos);
+    $("#totalBox").textContent = v;
+    $("#barCount").textContent = resumoQtd(qc, state.copos) + (podeParcelar() ? " · ou 2x" : "");
+  }
   $("#barTotal").textContent = v;
 }
 
 /* ============================================================
-   3 · PAGAMENTO
+   4 · PAGAMENTO
    ============================================================ */
 const copyBtn = $("#copyPix");
 copyBtn.addEventListener("click", async () => {
@@ -853,6 +1239,12 @@ function setError(key, msg){
   const block = { nome:"#blockNome", itens:"#blockItens", file:"#blockPagamento" }[key];
   $(block).classList.toggle("has-error", !!msg);
 }
+function itemErroAtual(){
+  const err = $("#itensError");
+  // só mantém a mensagem de "pedido vazio" enquanto continuar vazio
+  if(err.textContent.startsWith("Escolha pelo menos") && (state.itens.length || state.copos)) return "";
+  return err.textContent;
+}
 
 function validar(){
   let primeiro = null;
@@ -878,8 +1270,11 @@ function validar(){
     el.classList.toggle("has-error", falta);
     if(falta && !itemErro) itemErro = el;
   });
-  setError("itens", itemErro ? "Complete modelo, cor e tamanho de todas as camisas." : "");
-  if(itemErro && !primeiro) primeiro = itemErro;
+  let msgItens = "";
+  if(!state.itens.length && !state.copos) msgItens = "Escolha pelo menos uma camisa ou um copo.";
+  else if(itemErro) msgItens = "Complete modelo, cor e tamanho de todas as camisas (ou remova a que não quiser).";
+  setError("itens", msgItens);
+  if(msgItens && !primeiro) primeiro = itemErro || $("#blockItens");
 
   if(processingFile && !primeiro){ setError("file", "Aguarde o comprovante terminar de carregar."); primeiro = $("#blockPagamento"); }
 
@@ -903,18 +1298,24 @@ const sendError = $("#sendError");
 function openModal(m){ m.classList.add("show"); document.body.classList.add("modal-open"); }
 function closeModal(m){ m.classList.remove("show"); if(!document.querySelector(".modal.show")) document.body.classList.remove("modal-open"); }
 
-function resumoHtml(itens, total){
+function resumoHtml(itens, copos, total, emDuasVezes){
   const linhas = itens.map(i => `
     <div class="summary-row">${shirtSvg(i, "mini-svg")}<span class="q">${i.qtd}×</span>
-      <span>${escapeHtml(i.modelo)} · ${escapeHtml(i.cor)} · <b>${escapeHtml(i.tamanho)}</b></span>
-      <span class="v">${brl(i.qtd * CONFIG.PRECO)}</span></div>`).join("");
-  return linhas + `<div class="summary-row total"><span>Total</span><span class="v">${brl(total)}</span></div>`;
+      <span>Camisa ${escapeHtml(i.modelo)} · ${escapeHtml(i.cor)} · <b>${escapeHtml(i.tamanho)}</b></span>
+      <span class="v">${brl(i.qtd * CONFIG.PRECO_CAMISA)}</span></div>`).join("");
+  const copo = copos ? `
+    <div class="summary-row"><img class="mini-img" src="assets/copo-frente.jpg" alt=""><span class="q">${copos}×</span>
+      <span>Copo Térmico 4 em 1</span>
+      <span class="v">${brl(copos * CONFIG.PRECO_COPO)}</span></div>` : "";
+  const parc = emDuasVezes ? `
+    <div class="summary-row"><span>Pagamento</span><span class="v">2x de ${brl(valorParcela(total))}</span></div>` : "";
+  return linhas + copo + `<div class="summary-row total"><span>Total</span><span class="v">${brl(total)}</span></div>` + parc;
 }
 
 $("#btnSend").addEventListener("click", () => {
   if(!validar()) return;
-  $("#confirmName").innerHTML = `Pedido de <b>${escapeHtml(state.nome)}</b> · ${plural(totalQtd(), "camisa", "camisas")}`;
-  $("#confirmSummary").innerHTML = resumoHtml(state.itens, totalValor());
+  $("#confirmName").innerHTML = `Pedido de <b>${escapeHtml(state.nome)}</b> · ${resumoQtd(qtdCamisas(), state.copos)}`;
+  $("#confirmSummary").innerHTML = resumoHtml(state.itens, state.copos, totalValor(), parcelado());
   $("#confirmStatus").innerHTML = state.comprovante
     ? `<span class="status-pill ok">✓ Comprovante anexado</span>`
     : `<span class="status-pill pend">! Sem comprovante — fica como pagamento pendente</span>`;
@@ -928,14 +1329,18 @@ confirmModal.addEventListener("click", e => { if(e.target === confirmModal && !s
 function buildPayload(){
   const f = state.comprovante;
   return {
-    formulario: "Camisa Comemorativa 1º Esqd C Pqdt",
+    formulario: "Coleção Comemorativa 1º Esqd C Pqdt",
     id: state.id,
     enviado_em: new Date().toISOString(),
     nome: state.nome.trim(),
     nome_de_guerra: nomeDeGuerra(state.nome),
-    quantidade: totalQtd(),
-    valor_unitario: CONFIG.PRECO,
+    quantidade: qtdCamisas(),
+    copos: state.copos,
+    preco_camisa: CONFIG.PRECO_CAMISA,
+    preco_copo: CONFIG.PRECO_COPO,
     total: totalValor(),
+    pagamento: parcelado() ? "2x" : "a_vista",
+    valor_parcela: parcelado() ? valorParcela(totalValor()) : totalValor(),
     itens: state.itens.map(i => ({ modelo:i.modelo, cor:i.cor, tamanho:i.tamanho, quantidade:i.qtd })),
     comprovante: f ? { nome:f.nome, mime:f.mime, base64:f.base64 } : null
   };
@@ -988,22 +1393,25 @@ btnConfirm.addEventListener("click", async () => {
 
 function showDone(p){
   const itens = p.itens.map(i => ({ modelo:i.modelo, cor:i.cor, tamanho:i.tamanho, qtd:i.quantidade }));
-  const msg = p.comprovante
+  const duas = p.pagamento === "2x";
+  const agora = duas ? p.valor_parcela : p.total;
+  let msg = p.comprovante
     ? "Recebemos seu pedido e o comprovante. Guarde o número abaixo."
-    : `Pedido registrado como <b>pagamento pendente</b>. Faça o Pix de <b>${brl(p.total)}</b> para ${escapeHtml(CONFIG.PIX_FAVORECIDO)} (chave ${CONFIG.PIX_CHAVE_EXIBICAO}) e envie o comprovante a ele com o número do pedido.`;
+    : `Pedido registrado como <b>pagamento pendente</b>. Faça o Pix de <b>${brl(agora)}</b>${duas ? " (1ª parcela)" : ""} para ${escapeHtml(CONFIG.PIX_FAVORECIDO)} (chave ${CONFIG.PIX_CHAVE_EXIBICAO}) e envie o comprovante a ele com o número do pedido.`;
+  if(duas) msg += ` <b>Não esqueça da 2ª parcela de ${brl(p.total - p.valor_parcela)}</b>, paga depois pelo mesmo Pix.`;
   $("#doneContent").innerHTML = `
     <div class="done-icon"><span>✓</span></div>
     <h3 id="doneTitle">Pedido enviado!</h3>
     <div class="pedido-num">Nº ${escapeHtml(p.id)}</div>
     <p>${msg}</p>
-    <div class="summary">${resumoHtml(itens, p.total)}</div>
-    <button type="button" class="btn btn-light" id="novoPedido" style="width:100%">Fazer outro pedido</button>`;
+    <div class="summary">${resumoHtml(itens, p.copos, p.total, duas)}</div>
+    <button type="button" class="btn btn-light btn-block" id="novoPedido">Fazer outro pedido</button>`;
   openModal(doneModal);
 
   clearDraft();
   if(state.comprovante && state.comprovante.previewUrl) URL.revokeObjectURL(state.comprovante.previewUrl);
-  state.id = novoId(); state.nome = ""; state.itens = [novoItem()]; state.comprovante = null;
-  nomeField.value = ""; updateGuerra(); renderItens(); renderUpload();
+  state.id = novoId(); state.nome = ""; state.itens = []; state.copos = 0; state.parcelado = false; state.comprovante = null;
+  nomeField.value = ""; updateGuerra(); renderItens(); refreshCopos(); renderUpload();
 
   $("#novoPedido").addEventListener("click", () => {
     closeModal(doneModal);
@@ -1015,7 +1423,12 @@ function showDone(p){
    FOTO AMPLIADA / TECLADO / START
    ============================================================ */
 const lightbox = $("#lightbox");
-$("#openPhoto").addEventListener("click", () => openModal(lightbox));
+const lightboxImg = $("#lightboxImg");
+document.querySelectorAll("[data-zoom]").forEach(b => b.addEventListener("click", () => {
+  lightboxImg.src = b.dataset.zoom;
+  lightboxImg.alt = b.querySelector("img").alt;
+  openModal(lightbox);
+}));
 lightbox.addEventListener("click", e => { if(e.target.tagName !== "IMG") closeModal(lightbox); });
 document.addEventListener("keydown", e => {
   if(e.key !== "Escape") return;
@@ -1024,6 +1437,7 @@ document.addEventListener("keydown", e => {
 });
 
 renderItens();
+refreshCopos();
 renderUpload();
 
 })();
