@@ -3,7 +3,8 @@
  *
  * O que faz a cada pedido recebido do index.html:
  *  - Aba "Pedidos": 1 linha por pedido (militar, qtd de camisas, qtd de copos,
- *    total, link do comprovante, status do pagamento e uma caixa "Conferido").
+ *    total, forma de pagamento — à vista ou 2x —, link do comprovante, status,
+ *    caixa "Conferido" e, nos parcelados, caixa "2ª parcela paga").
  *  - Aba "Camisas": 1 linha por item de camisa (modelo, cor, tamanho, quantidade).
  *  - Aba "Resumo": tabela Modelo × Cor × Tamanho das camisas + total de copos,
  *    pronta para mandar ao fornecedor.
@@ -37,9 +38,10 @@ var CONFIG = {
 };
 
 var CAB_PEDIDOS = ["Recebido em", "Pedido", "Nome do militar", "Nome de guerra", "Qtd camisas",
-                   "Qtd copos", "Total (R$)", "Itens", "Comprovante", "Pagamento", "Conferido"];
+                   "Qtd copos", "Total (R$)", "Forma de pagamento", "Itens", "Comprovante",
+                   "Pagamento", "Conferido", "2ª parcela paga"];
 var CAB_CAMISAS = ["Recebido em", "Pedido", "Nome do militar", "Modelo", "Cor", "Tamanho", "Qtd"];
-var COL = { COPOS: 6, TOTAL: 7, CONFERIDO: 11 };
+var COL = { COPOS: 6, TOTAL: 7, FORMA: 8, CONFERIDO: 12, PARCELA2: 13 };
 
 function doPost(e) {
   var lock = LockService.getScriptLock();
@@ -78,13 +80,22 @@ function doPost(e) {
     });
     if (copos) linhasTexto.push(copos + "× Copo Térmico 4 em 1");
 
+    // 2x só vale para pedido com camisa E copo
+    var duasVezes = data.pagamento === "2x" && qtdCamisas > 0 && copos > 0;
+    var parcela1 = Math.round(total * 100 / 2) / 100;
+    var forma = duasVezes
+      ? "2x — R$ " + parcela1.toFixed(2).replace(".", ",") + " + R$ " + (total - parcela1).toFixed(2).replace(".", ",")
+      : "À vista";
+    var status = link ? (duasVezes ? "1ª parcela enviada" : "Comprovante enviado") : "Pendente";
+
     abaPedidos.appendRow([
       agora, data.id, data.nome, data.nome_de_guerra || "", qtdCamisas, copos,
-      total, linhasTexto.join("\n"), link, link ? "Comprovante enviado" : "Pendente", false
+      total, forma, linhasTexto.join("\n"), link, status, false, duasVezes ? false : "—"
     ]);
     var linha = abaPedidos.getLastRow();
     abaPedidos.getRange(linha, COL.TOTAL).setNumberFormat('"R$" #,##0.00');
     abaPedidos.getRange(linha, COL.CONFERIDO).insertCheckboxes();
+    if (duasVezes) abaPedidos.getRange(linha, COL.PARCELA2).insertCheckboxes();
 
     if (itens.length) {
       var linhasCamisas = itens.map(function (i) {
@@ -134,11 +145,17 @@ function atualizarResumo() {
   });
 
   var np = abaPedidos.getLastRow() - 1;
-  var totalCopos = 0, totalValor = 0;
+  var totalCopos = 0, totalValor = 0, parcelados = 0, aReceber = 0;
   if (np > 0) {
-    abaPedidos.getRange(2, COL.COPOS, np, 2).getValues().forEach(function (r) {
-      totalCopos += Number(r[0]) || 0;
-      totalValor += Number(r[1]) || 0;
+    abaPedidos.getRange(2, COL.COPOS, np, COL.PARCELA2 - COL.COPOS + 1).getValues().forEach(function (r) {
+      var copos = Number(r[0]) || 0, valor = Number(r[1]) || 0, forma = String(r[2] || "");
+      var parcela2Paga = r[COL.PARCELA2 - COL.COPOS];
+      totalCopos += copos;
+      totalValor += valor;
+      if (forma.indexOf("2x") === 0) {
+        parcelados++;
+        if (parcela2Paga !== true) aReceber += valor - Math.round(valor * 100 / 2) / 100;
+      }
     });
   }
 
@@ -170,25 +187,34 @@ function atualizarResumo() {
   resumo.getRange(ini + tabela.length - 1, 1, 1, tabela[0].length).setFontWeight("bold").setBackground("#FADC1C");
 
   var linhaInfo = ini + tabela.length + 1;
-  resumo.getRange(linhaInfo, 1, 4, 2).setValues([
+  resumo.getRange(linhaInfo, 1, 6, 2).setValues([
     ["Camisas", totalCamisas],
     ["Copos Térmicos 4 em 1", totalCopos],
     ["", ""],
-    ["Valor total dos pedidos (R$)", totalValor]
+    ["Valor total dos pedidos (R$)", totalValor],
+    ["Pedidos parcelados em 2x", parcelados],
+    ["2ª parcelas ainda a receber (R$)", aReceber]
   ]);
   resumo.getRange(linhaInfo + 1, 1, 1, 2).setBackground("#FADC1C");
   resumo.getRange(linhaInfo + 3, 2).setNumberFormat('"R$" #,##0.00');
-  resumo.getRange(linhaInfo, 1, 4, 1).setFontWeight("bold");
+  resumo.getRange(linhaInfo + 5, 2).setNumberFormat('"R$" #,##0.00');
+  resumo.getRange(linhaInfo, 1, 6, 1).setFontWeight("bold");
 }
 
 /* ---------------- auxiliares ---------------- */
 
-/** Aba "Pedidos" com o cabeçalho atual; migra a versão antiga (só camisas) inserindo a coluna de copos. */
+/**
+ * Aba "Pedidos" com o cabeçalho atual. Migra a versão antiga (só camisas) sem perder
+ * linhas: insere as colunas "Qtd copos" e "Forma de pagamento" e acrescenta
+ * "2ª parcela paga" no fim. Pedidos antigos ficam com essas colunas em branco.
+ */
 function obterAbaPedidos_(ss) {
   var aba = obterAba_(ss, "Pedidos", CAB_PEDIDOS);
-  var cab = aba.getRange(1, 1, 1, Math.max(aba.getLastColumn(), 1)).getValues()[0];
-  if (cab[COL.COPOS - 1] !== "Qtd copos") {
-    aba.insertColumnAfter(COL.COPOS - 1); // pedidos antigos ficam com copos em branco
+  var cab = function () { return aba.getRange(1, 1, 1, Math.max(aba.getLastColumn(), 1)).getValues()[0]; };
+  var mudou = false;
+  if (cab()[COL.COPOS - 1] !== "Qtd copos") { aba.insertColumnAfter(COL.COPOS - 1); mudou = true; }
+  if (cab()[COL.FORMA - 1] !== "Forma de pagamento") { aba.insertColumnAfter(COL.FORMA - 1); mudou = true; }
+  if (mudou || cab()[COL.PARCELA2 - 1] !== CAB_PEDIDOS[COL.PARCELA2 - 1]) {
     aba.getRange(1, 1, 1, CAB_PEDIDOS.length).setValues([CAB_PEDIDOS])
       .setFontWeight("bold").setBackground("#8FD3F4");
   }
